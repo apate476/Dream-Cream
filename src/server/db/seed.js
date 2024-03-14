@@ -34,6 +34,9 @@ const dropTables = async () => {
   try {
     await db.query(`
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS iceCream;
+        DROP TABLE IF EXISTS orders;
+        DROP TABLE IF EXISTS orders_products;
         `);
   } catch (err) {
     throw err;
@@ -51,6 +54,7 @@ const createTables = async () => {
         )`);
 
     await db.query(`
+    
           CREATE TABLE iceCream(
             id SERIAL PRIMARY KEY,
             flavor TEXT,
