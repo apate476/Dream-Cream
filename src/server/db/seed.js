@@ -88,7 +88,7 @@ const createTables = async () => {
 const addIceCreams = async () => {
   try {
     await db.query(`
-  INSERT INTO iceCream(flavor, brand, price, size, "imageUrl", nutrition)
+  INSERT INTO iceCream(flavor, brand, price, size, imageUrl, nutrition)
   VALUES ('Oregon Strawberry', 'Tillamook', 5.32, '48 oz.', 'https://images.ctfassets.net/j8tkpy1gjhi5/7f03zWMMpf29F6zH5phUjj/e2057a368cffd22f034acbfcf5dccf07/BR22_48oz_Carton_OregonStrawberry_Rndr_FNL.png', 'https://i5.walmartimages.com/asr/ab80c04c-b13c-416f-8997-d2eb40308e9b.6ee4d8521470e2986ddba9379167242d.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
   ('Peaches & Cream', 'Tillamook', 5.32, '48 oz.', 'https://target.scene7.com/is/image/Target/GUEST_2f22b7ee-52b8-4686-a71a-6ea8dedda39a?wid=488&hei=488&fmt=pjpeg', 'https://i5.walmartimages.com/asr/faf76c76-2469-4ea5-9f06-a84ca861f65d.f1286b4a50d72cd3b642c2acb5bdbcb1.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
   ('Bunny Tracks', 'Blue Bunny', 7.89, '46 oz.', 'https://target.scene7.com/is/image/Target/GUEST_0e4d7874-0d0a-4a10-bd96-b8300e211957?wid=488&hei=488&fmt=pjpeg', 'https://www.kroger.com/product/images/large/back/0007064001237'),
