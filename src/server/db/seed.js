@@ -32,6 +32,9 @@ const dropTables = async () => {
   try {
     await db.query(`
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS iceCream;
+        DROP TABLE IF EXISTS orders;
+        DROP TABLE IF EXISTS orders_products;
         `);
   } catch (err) {
     throw err;
