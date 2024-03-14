@@ -34,7 +34,7 @@ const dropTables = async () => {
   try {
     await db.query(`
         DROP TABLE IF EXISTS users;
-        DROP TABLE IF EXISTS iceCream;
+        DROP TABLE IF EXISTS icecream;
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS orders_products;
         `);
@@ -65,10 +65,6 @@ const createTables = async () => {
           nutrition TEXT
         )
         `);
-
-    await db.query(`
-          
-    `);
   } catch (err) {
     throw err;
   }
