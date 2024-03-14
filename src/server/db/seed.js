@@ -57,7 +57,7 @@ const createTables = async () => {
           brand TEXT,
           price DECIMAL(2),
           size TEXT,
-          "imageUrl" TEXT,
+          imageUrl TEXT,
           nutrition TEXT
         )
         `);
@@ -87,6 +87,7 @@ const seedDatabse = async () => {
     await dropTables();
     await createTables();
     await insertUsers();
+    await addIceCreams();
   } catch (err) {
     throw err;
   } finally {
