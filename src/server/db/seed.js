@@ -51,16 +51,35 @@ const createTables = async () => {
         )`);
 
     await db.query(`
-        CREATE TABLE iceCream(
-          id SERIAL PRIMARY KEY,
-          flavor TEXT,
-          brand TEXT,
-          price DECIMAL(2),
-          size TEXT,
-          "imageUrl" TEXT,
-          nutrition TEXT
-        )
+          CREATE TABLE iceCream(
+            id SERIAL PRIMARY KEY,
+            flavor TEXT,
+            brand TEXT,
+            price DECIMAL(2),
+            size TEXT,
+            "imageUrl" TEXT,
+           nutrition TEXT
+          )
         `);
+
+    await db.query(`
+          CREATE TABLE orders(
+            id SERIAL PRIMARY KEY,
+            userId INTEGER,
+            orderId INTEGER,
+            orderDate DATE,
+            shippingAddress TEXT,
+            status TEXT
+          )
+    `);
+
+    await db.query(`
+          CREATE TABLE orders_products(
+            orderId INTEGER,
+            productId INTEGER,
+            quantity INTEGER
+          )
+    `);
   } catch (err) {
     throw err;
   }
