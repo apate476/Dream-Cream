@@ -61,6 +61,10 @@ const createTables = async () => {
           nutrition TEXT
         )
         `);
+
+    await db.query(`
+          
+    `);
   } catch (err) {
     throw err;
   }
