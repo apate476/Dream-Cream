@@ -13,7 +13,7 @@ async function getIceCreamByName(name) {
     const { rows } = await db.query(`
     SELECT * FROM iceCream
     WHERE name = $1
-    `, [ name] )
+    `, [ name ] )
 
     return rows[0]
 }
