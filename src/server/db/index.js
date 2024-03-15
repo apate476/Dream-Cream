@@ -6,8 +6,13 @@ async function getAllIceCream() {
     return rows
 }
 
-async function getSinlgeIceCream() {
+async function getSinlgeIceCream(id) {
+    const { rows } = await db.query(`
+    SELECT * FROM iceCream
+    WHERE id = $1
+    `, [ id ])
 
+    return rows
 }
 
 async function getIceCreamByName(name) {
