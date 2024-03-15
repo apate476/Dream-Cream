@@ -13,14 +13,14 @@ function App() {
 
     </header>
 
-    <body>
+    <main>
     <Routes>
         <Route path='/' element={<AllIceCream />} />
     </Routes>
-    </body>
+    </main>
 
     <footer>
-      
+
     </footer>
       
     </>
