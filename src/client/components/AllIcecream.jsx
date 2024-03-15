@@ -9,7 +9,7 @@ function AllIceCream() {
 
   useEffect(() => {
     async function fetchIceCream() {
-      const { data } = await axios.get('/api/IceCream')
+      const { data } = await axios.get('/api/ice_cream')
 
       setIceCream(data)
     }
@@ -19,7 +19,7 @@ function AllIceCream() {
   }, [])
 
 
-  console.log({ IceCream })
+  console.log( IceCream )
 
   return <div className="IceCream-container">
     <h1>IceCream:</h1>
