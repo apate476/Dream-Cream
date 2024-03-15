@@ -9,7 +9,7 @@ function AllIceCream() {
 
   useEffect(() => {
     async function fetchIceCream() {
-      const { data } = await axios.get('/api/IceCream')
+      const { data } = await axios.get('/api/ice_cream')
 
       setIceCream(data)
     }
