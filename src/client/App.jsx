@@ -9,9 +9,20 @@ function App() {
 
   return (
     <>
-      <Routes>
+    <header>
+
+    </header>
+
+    <body>
+    <Routes>
         <Route path='/' element={<AllIceCream />} />
-      </Routes>
+    </Routes>
+    </body>
+
+    <footer>
+      
+    </footer>
+      
     </>
     
   );
