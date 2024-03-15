@@ -34,11 +34,7 @@ const dropTables = async () => {
   try {
     await db.query(`
         DROP TABLE IF EXISTS users;
-<<<<<<< HEAD
-        DROP TABLE IF EXISTS icecream;
-=======
         DROP TABLE IF EXISTS iceCream;
->>>>>>> d94396e8bfd2144472b70c35c9d1581673a67882
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS orders_products;
         `);
