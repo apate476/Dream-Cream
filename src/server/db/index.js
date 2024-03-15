@@ -7,10 +7,12 @@ async function getAllIceCream() {
 }
 
 async function getSinlgeIceCream(id) {
-    const { rows } = await brotliDecompress.query(`
+    const { rows } = await db.query(`
     SELECT * FROM iceCream
     WHERE id = $1
     `, [ id ])
+
+    return rows
 }
 
 async function getIceCreamByName(name) {
