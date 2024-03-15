@@ -9,6 +9,10 @@ async function getAllIceCream() {
     return rows
 }
 
+async function getSinlgeIceCream() {
+
+}
+
 async function getIceCreamByName(name) {
     const { rows } = await db.query(`
     SELECT * FROM iceCream
@@ -18,4 +22,4 @@ async function getIceCreamByName(name) {
     return rows[0]
 }
 
-module.exports = { getAllIceCream, getIceCreamByName }
+module.exports = { getAllIceCream, getIceCreamByName, getSinlgeIceCream }

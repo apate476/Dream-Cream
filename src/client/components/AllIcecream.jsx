@@ -19,7 +19,7 @@ function AllIceCream() {
   }, [])
 
 
-  console.log({ IceCream })
+  console.log( IceCream )
 
   return <div className="IceCream-container">
     <h1>IceCream:</h1>
