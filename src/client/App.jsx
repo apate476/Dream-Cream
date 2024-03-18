@@ -1,30 +1,27 @@
-import { useState } from 'react';
-import Login from './components/Login';
-import AllIceCream from './components/AllIcecream'
+import { useState } from "react";
+import Login from "./components/Login";
+import AllIceCream from "./components/AllIcecream";
+import SingleIceCream from "./components/SingleIcecream";
+import NavBar from "./components/NavBar";
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-
-
   return (
     <>
-    <header>
+      <header>
+        <NavBar />
+      </header>
 
-    </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<AllIceCream />} />
+          <Route path="/api/users/login" element={<Login />} />
+        </Routes>
+      </main>
 
-    <main>
-    <Routes>
-        <Route path='/' element={<AllIceCream />} />
-    </Routes>
-    </main>
-
-    <footer>
-
-    </footer>
-      
+      <footer></footer>
     </>
-    
   );
 }
 
