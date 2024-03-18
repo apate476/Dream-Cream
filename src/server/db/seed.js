@@ -3,29 +3,54 @@ const { createUser } = require("./users");
 
 const users = [
   {
-    name: "Emily Johnson",
+    firstname: "Emily",
+    lastname: " Johnson",
     email: "emily@example.com",
     password: "securepass",
+    address: "123 S Apple Dr",
+    city: "Provo",
+    state: "Utah",
+    zip: 12345,
   },
   {
-    name: "Liu Wei",
+    firstname: "Liu",
+    lastname: "Wei",
     email: "liu@example.com",
     password: "strongpass",
+    address: "123 S Apple Dr",
+    city: "Provo",
+    state: "Utah",
+    zip: 12345,
   },
   {
-    name: "Isabella García",
+    firstname: "Isabella",
+    lastname: "García",
     email: "bella@example.com",
     password: "pass1234",
+    address: "123 S Apple Dr",
+    city: "Provo",
+    state: "Utah",
+    zip: 12345,
   },
   {
-    name: "Mohammed Ahmed",
+    firstname: "Mohammed",
+    lastname: "Ahmed",
     email: "mohammed@example.com",
     password: "mysecretpassword",
+    address: "123 S Apple Dr",
+    city: "Provo",
+    state: "Utah",
+    zip: 12345,
   },
   {
-    name: "John Smith",
+    firstname: "John",
+    lastname: "Smith",
     email: "john@example.com",
     password: "password123",
+    address: "123 S Apple Dr",
+    city: "Provo",
+    state: "Utah",
+    zip: 12345,
   },
   // Add more user objects as needed
 ];
@@ -48,9 +73,13 @@ const createTables = async () => {
     await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            name VARCHAR(255) DEFAULT 'name',
+            firstname text,
+            lastname text,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL
+            address text,
+            state text,
+            zip integer,
         )`);
 
     await db.query(`
