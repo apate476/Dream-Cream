@@ -4,7 +4,7 @@ import AllIceCream from "./components/AllIcecream";
 import SingleIceCream from "./components/SingleIcecream";
 import NavBar from "./components/NavBar";
 import AddUser from "./components/Register";
-import companyDescription from "./components/AboutUs";
+import CompanyDescription from "./components/AboutUs";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<AllIceCream />} />
           <Route path="/api/users/login" element={<Login />} />
           <Route path="/api/users/register" element={<AddUser />} />
-          <Route path="/about-us" element={<companyDescription />} />
+          <Route path="/about-us" element={<CompanyDescription />} />
         </Routes>
       </main>
 
