@@ -1,32 +1,40 @@
-import { useState, useEffect } from "react"
-import axios from 'axios'
-import './allIceCream.css'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./allIceCream.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AllIceCream() {
+  const [IceCream, setIceCream] = useState([]);
 
-  const [IceCream, setIceCream] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchIceCream() {
-      const { data } = await axios.get('/api/ice_cream')
+      const { data } = await axios.get("/api/ice_cream");
 
-      setIceCream(data)
+      setIceCream(data);
     }
 
-    fetchIceCream()
+    fetchIceCream();
+  }, []);
 
-  }, [])
+  console.log(IceCream);
 
-
-  console.log( IceCream )
-
-  return <div className="IceCream-container">
-    <h1>IceCream:</h1>
-    {IceCream.map(c => <div key={c.id} className="IceCream">
-      <Link to={`/${c.name}`}><h1>{c.name}</h1></Link>
-    </div>)}
-  </div>
+  return (
+    <div className="IceCream-container">
+      {IceCream.map((ic) => {
+        return (
+          <article key={ic.id}>
+            <h2 onClick={() => navigate(`/ice_cream/${ic.id}`)}></h2>
+            <img src={ic.imageUrl} alt="" />
+            <h3>{ic.flavor}</h3>
+            <h4>{ic.brand}</h4>
+          </article>
+        );
+      })}
+    </div>
+  );
 }
- 
-export default AllIceCream
+
+export default AllIceCream;
