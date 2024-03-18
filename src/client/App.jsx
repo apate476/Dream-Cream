@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AllIceCream />} />
           <Route path="/api/users/login" element={<Login />} />
-          <Route path="api/users/register" element={<AddUser />} />
+          <Route path="/api/users/register" element={<AddUser />} />
         </Routes>
       </main>
 

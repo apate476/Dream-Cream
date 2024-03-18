@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { adduser } from "../api";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser({ setToken }) {
@@ -29,6 +28,19 @@ export default function AddUser({ setToken }) {
     };
 
     console.log(payload);
+
+    const register = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/users/register",
+          payload
+        );
+        const result = await response.json();
+        set;
+      } catch (err) {
+        throw err;
+      }
+    };
 
     try {
       const registration = await register(payload);
@@ -76,7 +88,7 @@ export default function AddUser({ setToken }) {
           </label>
           <label>
             City:
-            <input value={state} onChange={(e) => setCity(e.target.value)} />
+            <input value={city} onChange={(e) => setCity(e.target.value)} />
           </label>
           <label>
             State:
