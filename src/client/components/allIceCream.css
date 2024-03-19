@@ -2,58 +2,47 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+    background: linear-gradient(135deg, #f9e8ff, #d5f7ff);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
   
   article {
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
     padding: 20px;
-    background-color: #f9f9f9;
-    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   article:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
   }
   
   h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     cursor: pointer;
-    color: #333;
+    color: #330f49;
   }
   
   img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 15px; 
     margin-bottom: 10px;
   }
   
   h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
+    color: #330f49; 
   }
   
   h4 {
     font-size: 1rem;
     color: #666;
-  }
-  
-  .IceCream-container {
-    background-color: #f5f5f5;
-    padding: 20px;
-  }
-  
-  article {
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    color: #1a1a1a;
-  }
-  
-  h4 {
-    color: #777;
   }

@@ -16,6 +16,7 @@ icRouter.get("/", async (req, res, next) => {
   }
 });
 
+
 icRouter.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -26,6 +27,8 @@ icRouter.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+
 
 // icRouter.get("/:name", async (req, res, next) => {
 //   try {
