@@ -6,8 +6,8 @@ export default function NavBar() {
       <Link to="/">Home</Link>
       <Link to="/api/users/login">Login</Link>
       <Link to="api/users/register">Register</Link>
+      <Link to="/api/orders_products">Checkout</Link>
       <Link to="/about-us">About Us</Link>
-      <Link to="">Cart</Link>
     </nav>
   );
 }
