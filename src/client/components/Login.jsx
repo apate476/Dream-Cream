@@ -6,6 +6,8 @@ const Login = () => {
   const [message, setMessage] = useState('');
 
   const handleEmailChange = (e) => {
+console.log(e.target.value)
+
     setEmail(e.target.value);
   };
 
