@@ -1,5 +1,3 @@
-const { createOrder, clearCart } = require('../db/orders');
-
 const orderController = {
   createOrder: async (req, res, next) => {
     try {
