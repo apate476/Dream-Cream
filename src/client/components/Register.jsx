@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function AddUser({ setToken }) {
   const navigate = useNavigate();
@@ -76,6 +77,7 @@ export default function AddUser({ setToken }) {
         <label>
           Password:
           <input
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
