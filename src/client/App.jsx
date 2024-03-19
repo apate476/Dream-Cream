@@ -23,7 +23,7 @@ function App() {
           <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route path="/api/users/login" element={<Login />} />
           <Route path="/api/users/register" element={<AddUser />} />
-          <Route path="/api/orders_products" element={<Checkout />} />
+          <Route path="/api/orders/checkout" element={<Checkout />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/SearchBar" element={<SearchBar />} />
         </Routes>
