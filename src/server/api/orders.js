@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createOrder, clearCart } = require("../db/cart");
+const { createOrder, clearCart } = require("../controllers/orderController");
 
 router.post("/checkout", async (req, res, next) => {
   const { userId, items } = req.body;
