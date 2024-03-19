@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./allIceCream.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function AllIceCream() {
   const [IceCream, setIceCream] = useState([]);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchIceCream() {
@@ -26,10 +26,10 @@ function AllIceCream() {
       {IceCream.map((ic) => {
         return (
           <article key={ic.id}>
-            <h2 onClick={() => navigate(`/ice_cream/${ic.id}`)}></h2>
             <img src={ic.imageUrl} alt="" />
             <h3>{ic.flavor}</h3>
             <h4>{ic.brand}</h4>
+            <Link to={`/icecream/${ic.id}`}>View Details</Link>
           </article>
         );
       })}
