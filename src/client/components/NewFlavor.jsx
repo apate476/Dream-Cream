@@ -26,7 +26,7 @@ export default function NewFlavorForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/ice_cream/addflavor",
+        "http://localhost:3000/api/ice_cream/admin",
         payload
       );
     } catch (error) {

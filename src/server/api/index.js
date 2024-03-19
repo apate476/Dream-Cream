@@ -2,17 +2,15 @@ const express = require("express");
 const apiRouter = express.Router();
 const jwt = require("jsonwebtoken");
 
-
-const volleyball = require('volleyball')
-const usersRouter = require('./users');
-const iceCreamRouter = require('./ice_cream');
-const ordersRouter = require('./orders');
+const volleyball = require("volleyball");
+const usersRouter = require("./users");
+const iceCreamRouter = require("./ice_cream");
+const ordersRouter = require("./orders");
 
 apiRouter.use(volleyball);
-apiRouter.use('/users', usersRouter);
-apiRouter.use('/ice_cream', iceCreamRouter);
-apiRouter.use('/orders', ordersRouter);
-
+apiRouter.use("/users", usersRouter);
+apiRouter.use("/ice_cream", iceCreamRouter);
+apiRouter.use("/orders", ordersRouter);
 
 // TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
@@ -39,11 +37,9 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
-const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
 
-const icRouter = require("./ice_cream");
-apiRouter.use("/ice_cream", icRouter);
+apiRouter.use("/ice_cream", iceCreamRouter);
 
 apiRouter.use((err, req, res, next) => {
   res.status(500).send(err);
