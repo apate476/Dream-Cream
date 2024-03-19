@@ -69,8 +69,49 @@ const getUserByEmail = async (email) => {
   }
 };
 
+const isLoggedIn = (req) => {
+  return !!req.user;
+};
+
+const addToCart = async (userId, icecreamId, quantity) => {
+  try {
+    const { rows } = await db.query(
+      `
+      INSERT INTO cart(user_id, icecream_id, quantity)
+      VALUES ($1, $2, $3)
+      RETURNING *;
+      `,
+      [userId, icecreamId, quantity]
+    );
+
+    return rows[0];
+  } catch (err) {
+    throw err;
+  }
+};
+
+const removeFromCart = async (cartItemId) => {
+  try {
+    const { rows } = await db.query(
+      `
+      DELETE FROM cart
+      WHERE id = $1
+      RETURNING *;
+      `,
+      [cartItemId]
+    );
+
+    return rows[0];
+  } catch (err) {
+    throw err;
+  }
+};
+
 module.exports = {
   createUser,
   getUser,
   getUserByEmail,
+  isLoggedIn,
+  addToCart,
+  removeFromCart
 };

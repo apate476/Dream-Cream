@@ -73,14 +73,14 @@ const createTables = async () => {
     await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            firstname text NOT NULL,
-            lastname text NOT NULL,
+            firstname text,
+            lastname text,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            address text NOT NULL,
-            city text NOT NULL,
-            state text NOT NULL,
-            zip integer NOT NULL
+            address text,
+            city text,
+            state text,
+            zip integer
         )`);
 
     await db.query(`
@@ -95,6 +95,15 @@ const createTables = async () => {
            nutrition TEXT
           )
         `);
+
+        await db.query(`
+        
+          CREATE TABLE cart(
+            id SERIAL PRIMARY KEY,
+            user_id INTEGER REFERENCES users(id),
+            icecream_id INTEGER REFERENCES iceCream(id),
+            quantity INTEGER DEFAULT 1
+        )`);
 
     await db.query(`
           CREATE TABLE orders(
