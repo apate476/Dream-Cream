@@ -1,27 +1,29 @@
-
-const db = require('./client')
+const db = require("./client");
 
 async function getAllIceCream() {
-    const { rows } = await db.query(` SELECT * FROM iceCream`)
-    return rows
+  const { rows } = await db.query(` SELECT * FROM iceCream`);
+  return rows;
 }
 
 async function getSinlgeIceCream(id) {
-    const { rows } = await db.query(`
+  const { rows } = await db.query(
+    `
     SELECT * FROM iceCream
     WHERE id = $1
-    `, [ id ])
+    `,
+    [id]
+  );
 
-    return rows
+  return rows[0];
 }
 
-async function getIceCreamByName(name) {
-    const { rows } = await db.query(`
-    SELECT * FROM iceCream
-    WHERE name = $1
-    `, [ name ] )
+// async function getIceCreamByName(name) {
+//     const { rows } = await db.query(`
+//     SELECT * FROM iceCream
+//     WHERE name = $1
+//     `, [ name ] )
 
-    return rows[0]
-}
+//     return rows[0]
+// }
 
-module.exports = { getAllIceCream, getIceCreamByName, getSinlgeIceCream }
+module.exports = { getAllIceCream, getSinlgeIceCream };

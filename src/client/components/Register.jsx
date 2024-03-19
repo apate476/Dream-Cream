@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { adduser } from "../api";
+// import { adduser } from "../api";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser({ setToken }) {
