@@ -9,6 +9,7 @@ import CompanyDescription from "./components/AboutUs";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [token, setToken] = useState(null);
   return (
     <>
       <header>
@@ -18,8 +19,14 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AllIceCream />} />
-          <Route path="/api/users/login" element={<Login />} />
-          <Route path="/api/users/register" element={<AddUser />} />
+          <Route
+            path="/api/users/login"
+            element={<Login setToken={setToken} />}
+          />
+          <Route
+            path="/api/users/register"
+            element={<AddUser setToken={setToken} />}
+          />
           <Route path="/about-us" element={<CompanyDescription />} />
         </Routes>
       </main>

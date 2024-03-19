@@ -73,14 +73,14 @@ const createTables = async () => {
     await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            firstname text,
-            lastname text,
+            firstname text NOT NULL,
+            lastname text NOT NULL,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            address text,
-            city text,
-            state text,
-            zip integer
+            address text NOT NULL,
+            city text NOT NULL,
+            state text NOT NULL,
+            zip integer NOT NULL
         )`);
 
     await db.query(`
