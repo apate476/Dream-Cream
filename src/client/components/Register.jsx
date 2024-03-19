@@ -21,6 +21,7 @@ export default function AddUser({ setToken }) {
         "http://localhost:3000/api/users/register",
         payload
       );
+      navigate("/api/users/login");
       const result = response.data;
       return result;
     } catch (err) {
