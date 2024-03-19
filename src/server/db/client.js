@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 const connectionString =
-  process.env.DATABASE_URL || "http://localhost:5432/capstoneData";
+  process.env.DATABASE_URL || "postgresql://localhost:5432/capstoneData";
 
 const db = new Client({
   connectionString,

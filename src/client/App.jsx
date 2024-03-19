@@ -20,6 +20,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AllIceCream />} />
+          <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route path="/api/users/login" element={<Login />} />
           <Route path="/api/users/register" element={<AddUser />} />
           <Route path="/api/orders_products" element={<Checkout />} />
