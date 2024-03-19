@@ -5,11 +5,12 @@ import SingleIceCream from "./components/SingleIcecream";
 import NavBar from "./components/NavBar";
 import AddUser from "./components/Register";
 import CompanyDescription from "./components/AboutUs";
+import Checkout from "./components/Checkout";
+
 
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [token, setToken] = useState(null);
   return (
     <>
       <header>
@@ -19,14 +20,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AllIceCream />} />
-          <Route
-            path="/api/users/login"
-            element={<Login setToken={setToken} />}
-          />
-          <Route
-            path="/api/users/register"
-            element={<AddUser setToken={setToken} />}
-          />
+          <Route path="/icecream/:id" element={<SingleIceCream />} />
+          <Route path="/api/users/login" element={<Login />} />
+          <Route path="/api/users/register" element={<AddUser />} />
+          <Route path="/api/orders_products" element={<Checkout />} />
           <Route path="/about-us" element={<CompanyDescription />} />
         </Routes>
       </main>
