@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./register.css";
 
 export default function AddUser({ setToken }) {
@@ -21,7 +20,6 @@ export default function AddUser({ setToken }) {
         "http://localhost:3000/api/users/register",
         payload
       );
-      navigate("/api/users/login");
       const result = response.data;
       return result;
     } catch (err) {
@@ -79,7 +77,6 @@ export default function AddUser({ setToken }) {
         <label>
           Password:
           <input
-            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

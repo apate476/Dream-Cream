@@ -15,7 +15,7 @@ icRouter.get('/', async (req, res, next) =>{
 icRouter.get('/:id', async (req, res, next) => {
     try{
         const { id } = req.params
-        const singleFlavor = await getSinlgeIceCream(id) 
+        const singleFlavor = await getSingleIceCream(id) 
         res.send(singleFlavor)
     }   catch(err){
         console.log(err)
