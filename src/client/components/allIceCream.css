@@ -1,48 +1,76 @@
 .IceCream-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    background: linear-gradient(135deg, #f9e8ff, #d5f7ff);
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  article {
-    border: 2px solid #ddd;
-    border-radius: 15px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  article:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: #330f49;
-  }
-  
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px; 
-    margin-bottom: 10px;
-  }
-  
-  h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    color: #330f49; 
-  }
-  
-  h4 {
-    font-size: 1rem;
-    color: #666;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  background: linear-gradient(135deg, #f9e8ff, #d5f7ff);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-top: 70px;
+}
+
+article {
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #330f49;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #330f49;
+}
+
+h4 {
+  font-size: 1rem;
+  color: #666;
+}
+
+input[type="text"] {
+  width: 50%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  color: #330f49;
+  background-color: #fff;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+input[type="text"]::placeholder {
+  color: #999;
+}
+
+input[type="text"]:focus {
+  border-color: #330f49;
+  outline: none;
+}
