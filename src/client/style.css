@@ -15,4 +15,61 @@
   width: 250px;
 }
 
-/* Add more styling for other elements if needed */
+
+/*   single icecream page   */
+
+.single-icecream-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #ffefd5, #ffdab9);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 70px;
+}
+
+.single-icecream-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #8b4513;
+}
+
+.single-icecream-container h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #a0522d;
+}
+
+.single-icecream-container .images-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjusted to create space between images */
+}
+
+.single-icecream-container img {
+  width: 40%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.single-icecream-container p {
+  font-size: 1.2rem;
+  color: #8b4513;
+}
+
+.single-icecream-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f4a460;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.single-icecream-container button:hover {
+  background-color: #cd853f;
+}
+

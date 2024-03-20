@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "../style.css";
 
 function SingleIceCream() {
   const params = useParams();
@@ -33,10 +34,15 @@ function SingleIceCream() {
 
   return (
     <div className="single-icecream-container">
-      <h1>{icecream.flavor}</h1>
-      <h3>{icecream.description}</h3>
-      <img src={icecream.imageUrl} />
-      <p>$ {icecream.price}</p>
+      <h2>
+        {icecream.flavor} - {icecream.size}
+      </h2>
+      <h3>{icecream.brand}</h3>
+      <div className="images-container">
+        <img src={icecream.imageUrl} />
+        <img src={icecream.nutrition} />
+      </div>
+      <p>Price: $ {icecream.price}</p>
       <button onClick={() => navigate("/")}>Back to the List</button>
     </div>
   );
