@@ -9,6 +9,7 @@ export default function NavBar() {
       <Link to="/api/users/login">Login</Link>
       <Link to="/api/orders/checkout">Cart</Link>
       <Link to="/about-us">About Us</Link>
+      <Link to="/api/users/admin">Admin</Link>
     </nav>
   );
 }
