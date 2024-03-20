@@ -12,28 +12,39 @@ export default function NewFlavorForm() {
   const [price, setPrice] = useState("");
   const [nutritionUrl, setNutritionUrl] = useState("");
 
-  const payload = {
-    flavor,
-    brand,
-    size,
-    imageUrl,
-    price,
-    nutritionUrl,
+  const addFlavor = async (payload) => {
+    try {
+      const response = await axios.post("/api/ice_cream", payload);
+
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+
+    // navigate("/");
   };
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/ice_cream/admin",
-        payload
-      );
-    } catch (error) {
-      console.error(error);
-    }
+    const payload = {
+      flavor,
+      brand,
+      size,
+      imageUrl,
+      price,
+      nutritionUrl,
+    };
 
-    navigate("/");
+    console.log(payload);
+
+    try {
+      const addIceCream = await addFlavor(payload);
+      return addIceCream;
+    } catch (error) {
+      throw error;
+    }
   }
 
   return (
@@ -87,6 +98,7 @@ export default function NewFlavorForm() {
           onChange={(event) => setNutritionUrl(event.target.value)}
         />
       </label>
+      <button type="submit">Add to List</button>
     </form>
   );
 }
