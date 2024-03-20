@@ -14,10 +14,7 @@ export default function NewFlavorForm() {
 
   const addFlavor = async (payload) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/ice_cream/admin",
-        payload
-      );
+      const response = await axios.post("/api/ice_cream", payload);
 
       const result = response.data;
       return result;
