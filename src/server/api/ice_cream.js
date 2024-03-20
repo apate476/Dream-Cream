@@ -6,6 +6,8 @@ const {
   getSinlgeIceCream,
 } = require("../db/index");
 
+const { NewFlavorForm } = require("../client/components/NewFlavor");
+
 icRouter.get("/", async (req, res, next) => {
   try {
     const iceCream = await getAllIceCream();
@@ -15,7 +17,6 @@ icRouter.get("/", async (req, res, next) => {
     next(err);
   }
 });
-
 
 icRouter.get("/:id", async (req, res, next) => {
   try {
@@ -28,7 +29,14 @@ icRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-
+icRouter.post("/", async (req, res, next) => {
+  try {
+    const newflavor = await NewFlavorForm;
+    res.send(newflavor);
+  } catch (error) {
+    console.err(error);
+  }
+});
 
 // icRouter.get("/:name", async (req, res, next) => {
 //   try {
