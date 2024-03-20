@@ -42,7 +42,9 @@ function AllIceCream() {
             <img src={ic.imageUrl} alt="" />
             <h3>{ic.flavor}</h3>
             <h4>{ic.brand}</h4>
-            <Link to={`/icecream/${ic.id}`}>View Details</Link>
+            <Link to={`/icecream/${ic.id}`} className="Link">
+              View Details
+            </Link>
           </article>
         );
       })}
