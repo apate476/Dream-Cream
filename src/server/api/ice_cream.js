@@ -6,7 +6,7 @@ const {
   getSinlgeIceCream,
 } = require("../db/index");
 
-const { NewFlavorForm } = require("../client/components/NewFlavor");
+const { NewFlavorForm } = require("../../client/components/NewFlavor");
 
 icRouter.get("/", async (req, res, next) => {
   try {
