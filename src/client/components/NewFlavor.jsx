@@ -10,7 +10,7 @@ export default function NewFlavorForm() {
   const [size, setSize] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [price, setPrice] = useState("");
-  const [nutritionUrl, setNutritionUrl] = useState("");
+  const [nutrition, setNutrition] = useState("");
 
   const addFlavor = async (payload) => {
     try {
@@ -22,7 +22,7 @@ export default function NewFlavorForm() {
       console.error(error);
     }
 
-    // navigate("/");
+    navigate("/");
   };
 
   async function handleSubmit(event) {
@@ -34,7 +34,7 @@ export default function NewFlavorForm() {
       size,
       imageUrl,
       price,
-      nutritionUrl,
+      nutrition,
     };
 
     console.log(payload);
@@ -93,9 +93,9 @@ export default function NewFlavorForm() {
       <label>
         Nutrition Facts Image:
         <input
-          name="nutritionUrl"
-          value={nutritionUrl}
-          onChange={(event) => setNutritionUrl(event.target.value)}
+          name="nutrition"
+          value={nutrition}
+          onChange={(event) => setNutrition(event.target.value)}
         />
       </label>
       <button type="submit">Add to List</button>

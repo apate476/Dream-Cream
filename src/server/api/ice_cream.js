@@ -1,12 +1,6 @@
 const express = require("express");
 const icRouter = express.Router();
-const {
-  getAllIceCream,
-  //   getIceCreamByName,
-  getSinlgeIceCream,
-} = require("../db/index");
-
-const { NewFlavorForm } = require("../../client/components/NewFlavor");
+const { getAllIceCream, getSinlgeIceCream, addFlavor } = require("../db/index");
 
 icRouter.get("/", async (req, res, next) => {
   try {
@@ -31,22 +25,13 @@ icRouter.get("/:id", async (req, res, next) => {
 
 icRouter.post("/", async (req, res, next) => {
   try {
-    const newflavor = await NewFlavorForm;
-    res.send(newflavor);
+    const flavor = req.body;
+    const newflavor = await addFlavor(flavor);
+    newflavor.push(flavor);
+    res.send(flavor);
   } catch (error) {
-    console.err(error);
+    console.error(error);
   }
 });
-
-// icRouter.get("/:name", async (req, res, next) => {
-//   try {
-//     const { name } = req.params;
-//     const singleFlavor = await getIceCreamByName(name);
-//     res.send(singleFlavor);
-//   } catch (err) {
-//     console.log(err);
-//     next(err);
-//   }
-// });
 
 module.exports = icRouter;
