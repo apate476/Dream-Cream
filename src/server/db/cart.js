@@ -1,5 +1,9 @@
 const db = require('./client');
 
+const isLoggedIn = (req) => {
+    return !!req.user;
+  };
+
 async function addToCart(userId, icecreamId) {
     try {
         
@@ -44,6 +48,7 @@ async function removeFromCart(userId, icecreamId) {
 }
 
 module.exports = {
+    isLoggedIn,
     addToCart,
     removeFromCart
 };

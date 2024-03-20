@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Checkout = ({ userId }) => {
+const Cart = ({ userId }) => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Checkout = ({ userId }) => {
 
   return (
     <div>
-      <h2>Checkout</h2>
+      <h2>Cart</h2>
       <div>
         {cartItems.map((item) => (
           <div key={item.id}>
@@ -62,6 +62,6 @@ const Checkout = ({ userId }) => {
   );
 };
 
-export default Checkout;
+export default Cart;
 
 

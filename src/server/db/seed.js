@@ -71,7 +71,8 @@ const dropTables = async () => {
 const createTables = async () => {
   try {
     await db.query(`
-        CREATE TABLE users(
+        
+          CREATE TABLE users(
             id SERIAL PRIMARY KEY,
             firstname text,
             lastname text,
@@ -105,24 +106,6 @@ const createTables = async () => {
             quantity INTEGER DEFAULT 1
         )`);
 
-    await db.query(`
-          CREATE TABLE orders(
-            id SERIAL PRIMARY KEY,
-            userId INTEGER,
-            orderId INTEGER,
-            orderDate DATE,
-            shippingAddress TEXT,
-            status TEXT
-          )
-    `);
-
-    await db.query(`
-          CREATE TABLE orders_products(
-            orderId INTEGER,
-            productId INTEGER,
-            quantity INTEGER
-          )
-    `);
   } catch (err) {
     throw err;
   }

@@ -8,7 +8,7 @@ router.post("/checkout", async (req, res, next) => {
     const orderId = await createOrder(userId, items);
     await clearCart(userId);
 
-    // Placeholder response for now
+    
     res.status(200).json({ message: "Order Placed Succesfully" });
   } catch (error) {
     console.error("Error placing order:", error);
@@ -16,6 +16,6 @@ router.post("/checkout", async (req, res, next) => {
   }
 });
 
-// Add more routes for managing orders as needed
+
 
 module.exports = router;
