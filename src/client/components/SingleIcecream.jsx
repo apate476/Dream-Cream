@@ -34,10 +34,12 @@ function SingleIceCream() {
   return (
     <div className="single-icecream-container">
       <h1>{icecream.flavor}</h1>
-      <h3>{icecream.description}</h3>
+      <h2>{icecream.brand}</h2>
+      <h3>{icecream.size}</h3>
       <img src={icecream.imageUrl} />
-      <p>$ {icecream.price}</p>
-      <button onClick={() => navigate("/")}>Back to the List</button>
+      <img src={icecream.nutrition} alt="" />
+      <p>${icecream.price}</p>
+      <button onClick={() => navigate("/")}>View All</button>
     </div>
   );
 }
