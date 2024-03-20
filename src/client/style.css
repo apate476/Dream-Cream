@@ -15,7 +15,6 @@
   width: 250px;
 }
 
-
 /*   single icecream page   */
 
 .single-icecream-container {
@@ -26,7 +25,6 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin-top: 70px;
 }
 
 .single-icecream-container h2 {
@@ -72,4 +70,3 @@
 .single-icecream-container button:hover {
   background-color: #cd853f;
 }
-
