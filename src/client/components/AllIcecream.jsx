@@ -29,25 +29,29 @@ function AllIceCream() {
   );
 
   return (
-    <div className="IceCream-container">
-      <input
-        type="text"
-        placeholder="Search by brand or flavor..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      {filteredIceCream.map((ic) => {
-        return (
-          <article key={ic.id}>
-            <img src={ic.imageUrl} alt="" />
-            <h3>{ic.flavor}</h3>
-            <h4>{ic.brand}</h4>
-            <Link to={`/icecream/${ic.id}`} className="Link">
-              View Details
-            </Link>
-          </article>
-        );
-      })}
+    <div>
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Search by brand or flavor..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      <div className="IceCream-container">
+        {filteredIceCream.map((ic) => {
+          return (
+            <article key={ic.id}>
+              <img src={ic.imageUrl} alt="" />
+              <h3>{ic.flavor}</h3>
+              <h4>{ic.brand}</h4>
+              <Link to={`/icecream/${ic.id}`} className="Link">
+                View Details
+              </Link>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
