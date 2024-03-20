@@ -1,4 +1,5 @@
 .IceCream-container {
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
@@ -47,6 +48,9 @@ h4 {
   color: #666;
 }
 
+  nav {
+    margin: 0 10px;
+
 .Link {
   display: inline-block;
   padding: 10px 15px;
@@ -60,4 +64,5 @@ h4 {
 .Link:hover {
   background-color: #d5f7ff;
   color: #330f49;
+
 }

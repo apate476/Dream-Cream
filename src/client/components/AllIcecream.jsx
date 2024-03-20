@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function AllIceCream() {
   const [IceCream, setIceCream] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // const navigate = useNavigate();
 
@@ -21,9 +22,21 @@ function AllIceCream() {
 
   console.log(IceCream);
 
+  const filteredIceCream = IceCream.filter(
+    (ic) =>
+      ic.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      ic.flavor.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="IceCream-container">
-      {IceCream.map((ic) => {
+      <input
+        type="text"
+        placeholder="Search by brand or flavor..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      {filteredIceCream.map((ic) => {
         return (
           <article key={ic.id}>
             <img src={ic.imageUrl} alt="" />

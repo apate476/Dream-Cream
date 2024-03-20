@@ -1,10 +1,12 @@
 import React from 'react';
+import "./aboutUs.css";
+
 
 const CompanyDescription = () => {
   const companyName = 'Dream Cream'; 
 
   return (
-    <div>
+    <div className="company-description">
       <p>
         Delight in the timeless journey of flavors with {companyName},
         where every scoop is a celebration of creamy indulgence.
