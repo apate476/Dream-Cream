@@ -40,7 +40,6 @@ apiRouter.use("/users", usersRouter);
 apiRouter.use("/ice_cream", iceCreamRouter);
 
 apiRouter.use((err, req, res, next) => {
-  console.error(err);
   res.status(500).send(err);
 });
 
