@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import { clearCart } from '../db/cart';
-import { createOrder, addProductsToOrder } from '../db/orders';
+import { useNavigate } from 'react-router-dom';
+// import { clearCart } from '../db/cart';
+// import { createOrder, addProductsToOrder } from '../db/orders';
 
 const Checkout = ({ userId }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // -Function to fetch cart items from the server-
   const fetchCartItems = async () => {
@@ -54,7 +54,7 @@ const Checkout = ({ userId }) => {
       await clearCart(userId);
 
       // -Redirect back to Cart.jsx-
-      history.push('/Cart');
+      navigate('/Cart');
     } catch (error) {
       console.error('Error during checkout:', error);
     }

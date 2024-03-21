@@ -1,5 +1,5 @@
 const express = require('express');
-const cartRouter = express.Router();
+const router = express.Router();
 const db = require('../db');
 const { addToCart, removeFromCart, getCartItemsByUserId } = require('../db/cart');
 
@@ -36,6 +36,6 @@ router.get('/user-cart/:userId', async (req, res, next) => {
   }
 });
 
-module.exports = cartRouter;
+module.exports = router;
 
 

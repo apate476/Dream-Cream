@@ -1,5 +1,5 @@
 const express = require('express');
-const ordersRouter = express.Router();
+const router = express.Router();
 const { createOrder, addProductsToOrder, getOrdersByUserId } = require('../db/orders');
 
 // -Route to create a new order-
@@ -35,4 +35,4 @@ router.get('/user-orders/:userId', async (req, res, next) => {
   }
 });
 
-module.exports = ordersRouter;
+module.exports = router;
