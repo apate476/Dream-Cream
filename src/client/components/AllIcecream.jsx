@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function AllIceCream() {
   const [IceCream, setIceCream] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  
   // const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function AllIceCream() {
         {filteredIceCream.map((ic) => {
           return (
             <article key={ic.id}>
-              <img src={ic.imageurl} alt="" />
+              <img src={ic.imageUrl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
               <button onClick={() => handleAddToCart(ic.id)}>Add to Cart</button>
