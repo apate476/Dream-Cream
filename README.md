@@ -1,3 +1,16 @@
+To work on/run the program:
+
+1. Clone the repo
+
+2. Open your terminal and run npm install or npm i
+
+3. Next, run createdb capstoneData
+
+4. Run npm run seed
+
+5. Run npm run dev
+
+
 Wire Frame: https://excalidraw.com/#json=ysov1p9sgKu2cWSqh1u7A,4Kwr1mEaz8279ARH0HXRSw
 Tables outline: https://dbdiagram.io/d/Ice-Cream-Store-65f1e8f0b1f3d4062cdabfe1
 
