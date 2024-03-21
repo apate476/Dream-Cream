@@ -50,7 +50,7 @@ function SingleIceCream() {
       </h2>
       <h3>{icecream.brand}</h3>
       <div className="images-container">
-        <img src={icecream.imageUrl} />
+        <img src={icecream.imageurl} />
         <img src={icecream.nutrition} />
       </div>
       <p>Price: $ {icecream.price}</p>
