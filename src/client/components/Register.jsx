@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -48,7 +47,7 @@ export default function AddUser({ setToken }) {
 
     try {
       const registration = await register(payload);
-
+      console.log(registration.token);
       setToken(registration.token);
     } catch (err) {
       throw err;

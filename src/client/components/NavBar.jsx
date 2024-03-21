@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
-export default function NavBar() {
+export default function NavBar({ loggedIn, logout }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -28,12 +28,16 @@ export default function NavBar() {
         {}
         <div className={isOpen ? "menu open" : "menu"}>
           <Link to="/">Home</Link>
-          <Link to="/SearchBar">Search</Link>
-          <Link to="api/users/register">Register</Link>
-          <Link to="/api/users/login">Login</Link>
+          {!loggedIn && <Link to="api/users/register">Register</Link>}
+          {!loggedIn && <Link to="/api/users/login">Login</Link>}
           <Link to="/Cart">Cart</Link>
           <Link to="/about-us">About Us</Link>
           <Link to="/api/users/admin">Admin</Link>
+          {loggedIn && (
+            <Link to="/" onClick={logout}>
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </nav>

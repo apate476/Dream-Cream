@@ -6,25 +6,45 @@ import AddUser from "./components/Register";
 import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
-import Checkout from "./components/Checkout";
 
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [token, setToken] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  function signin() {
+    setLoggedIn(true);
+  }
+
+  function logout() {
+    setLoggedIn(false);
+  }
+
   return (
     <>
       <header>
-        <NavBar />
+        <NavBar loggedIn={loggedIn} logout={logout} />
       </header>
 
       <main>
         <Routes>
           <Route path="/" element={<AllIceCream />} />
           <Route path="/icecream/:id" element={<SingleIceCream />} />
-          <Route path="/api/users/login" element={<Login />} />
-          <Route path="/api/users/register" element={<AddUser />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/Checkout" element={<Checkout />} />
+          <Route
+            path="/api/users/login"
+            element={<Login setToken={setToken} signin={signin} />}
+          />
+          <Route
+            path="/api/users/register"
+            element={<AddUser setToken={setToken} signin={signin} />}
+          />
+          <Route
+            path="/api/account"
+            element={<Account token={token} loggedIn={loggedIn} />}
+          />
+          <Route path="/api/orders/checkout" element={<Cart />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
