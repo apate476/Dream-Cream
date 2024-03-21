@@ -6,6 +6,7 @@ import AddUser from "./components/Register";
 import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
+import Checkout from "./components/Checkout";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -22,7 +23,8 @@ function App() {
           <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route path="/api/users/login" element={<Login />} />
           <Route path="/api/users/register" element={<AddUser />} />
-          <Route path="/api/orders/checkout" element={<Cart />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
