@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./allIceCream.css";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../server/db/cart";
 // import { useNavigate } from "react-router-dom";
 
 function AllIceCream() {
@@ -28,6 +29,16 @@ function AllIceCream() {
       ic.flavor.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleAddToCart = async (iceCreamId) => {
+    try {
+      await addToCart(userId, iceCreamId);
+      alert("Item added to cart successfully!");
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+      alert("Failed to add item to cart. Please try again later.");
+    }
+  };
+
   return (
     <div>
       <div className="search-bar-container">
@@ -45,6 +56,7 @@ function AllIceCream() {
               <img src={ic.imageUrl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
+              <button onClick={() => handleAddToCart(ic.id)}>Add to Cart</button>
               <Link to={`/icecream/${ic.id}`} className="Link">
                 View Details
               </Link>

@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../style.css";
+import { addToCart } from "../../server/db/cart";
 
 function SingleIceCream() {
   const params = useParams();
@@ -28,6 +29,16 @@ function SingleIceCream() {
 
   console.log("Single IceCream:", icecream);
 
+  const handleAddToCart = async () => {
+    try {
+      await addToCart(userId, icecreamId);
+      alert("Item added to cart successfully!");
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+      alert("Failed to add item to cart. Please try again later.");
+    }
+  };
+
   if (error) {
     return <>{error}</>;
   }
@@ -43,6 +54,7 @@ function SingleIceCream() {
         <img src={icecream.nutrition} />
       </div>
       <p>Price: $ {icecream.price}</p>
+      <button onClick={handleAddToCart}>Add to Cart</button>
       <button onClick={() => navigate("/")}>Back to the List</button>
     </div>
   );

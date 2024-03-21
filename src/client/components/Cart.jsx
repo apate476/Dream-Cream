@@ -1,67 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { removeFromCart } from '../db/cart';
 
 const Cart = ({ userId }) => {
   const [cartItems, setCartItems] = useState([]);
+  
+  // -Function to fetch cart items from the server-
+  const fetchCartItems = async () => {
+    try {
+      const response = await axios.get(`/api/cart/user-cart/${userId}`);
+      setCartItems(response.data);
+    } catch (error) {
+      console.error('Error fetching cart items:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await axios.get(`/api/cart/${userId}`);
-        setCartItems(response.data);
-      } catch (error) {
-        console.error('Error fetching cart items:', error);
-      }
-    };
-
     fetchCartItems();
   }, [userId]);
 
-  const handleRemoveItem = async (itemId) => {
+  // -Function to handle item removal from cart-
+  const handleRemoveFromCart = async (icecreamId) => {
     try {
-      await axios.delete(`/api/cart/${userId}/${itemId}`);
-      setCartItems(cartItems.filter((item) => item.id !== itemId));
+      await removeFromCart(userId, icecreamId);
+      fetchCartItems(); // -Update cart items after removal-
     } catch (error) {
       console.error('Error removing item from cart:', error);
     }
   };
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
-  };
-
-  const handleCheckout = async () => {
-    try {
-      const response = await axios.post('/api/orders/checkout', {
-        userId,
-        items: cartItems,
-      });
-      console.log(response.data.message);
-      
-      setCartItems([]);
-    } catch (error) {
-      console.error('Error checking out:', error);
-    }
-  };
-
   return (
     <div>
-      <h2>Cart</h2>
-      <div>
+      <h2>Shopping Cart</h2>
+      <ul>
         {cartItems.map((item) => (
-          <div key={item.id}>
-            <p>{item.flavor}</p>
-            <p>Price: ${item.price}</p>
-            <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
-          </div>
+          <li key={item.id}>
+            <span>{item.flavor}</span>
+            <span>Price: ${item.price}</span>
+            <span>Quantity: {item.quantity}</span>
+            <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+          </li>
         ))}
-      </div>
-      <p>Total: ${calculateTotal()}</p>
-      <button onClick={handleCheckout}>Checkout</button>
+      </ul>
+      
+      <Link to="/Checkout">
+        <button>Proceed to Checkout</button>
+      </Link>
     </div>
   );
 };
 
 export default Cart;
-
-

@@ -5,25 +5,27 @@ const jwt = require("jsonwebtoken");
 const usersRouter = require("./users");
 const iceCreamRouter = require("./ice_cream");
 const ordersRouter = require("./orders");
+const cartRouter = require('./cart');
 
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/ice_cream", iceCreamRouter);
 apiRouter.use("/orders", ordersRouter);
+apiRouter.use('/cart', cartRouter);
 
-// TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
   const auth = req.header("Authorization");
 
   if (!auth) {
     next();
-  } else if (auth.startsWith("REPLACE_ME")) {
-    // TODO - Get JUST the token out of 'auth'
-    const token = "REPLACE_ME";
+  } else if (auth.startsWith("Bearer ")) {
+    // Extract
+    const token = auth.slice(7);
 
     try {
-      const parsedToken = "REPLACE_ME";
-      // TODO - Call 'jwt.verify()' to see if the token is valid. If it is, use it to get the user's 'id'. Look up the user with their 'id' and set 'req.user'
-      console.log("code");
+      // Verify
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+      next();
     } catch (error) {
       next(error);
     }
@@ -35,12 +37,8 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
-apiRouter.use("/users", usersRouter);
-
-apiRouter.use("/ice_cream", iceCreamRouter);
-
 apiRouter.use((err, req, res, next) => {
-  console.error(err) // please do log errors !
+  console.error(err);
   res.status(500).send(err);
 });
 
