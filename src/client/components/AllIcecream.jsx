@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./allIceCream.css";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../server/db/cart";
+// import { addToCart } from "../../server/db/cart";
 // import { useNavigate } from "react-router-dom";
 
 function AllIceCream() {
@@ -31,7 +31,7 @@ function AllIceCream() {
 
   const handleAddToCart = async (iceCreamId) => {
     try {
-      await addToCart(userId, iceCreamId);
+      // await addToCart(userId, iceCreamId);
       alert("Item added to cart successfully!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
@@ -53,7 +53,7 @@ function AllIceCream() {
         {filteredIceCream.map((ic) => {
           return (
             <article key={ic.id}>
-              <img src={ic.imageUrl} alt="" />
+              <img src={ic.imageurl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
               <button onClick={() => handleAddToCart(ic.id)}>Add to Cart</button>
