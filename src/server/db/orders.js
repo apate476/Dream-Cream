@@ -1,49 +1,39 @@
-const db = require('./client');
+const express = require('express');
+const ordersRouter = express.Router();
+const { createOrder, addProductsToOrder, getOrdersByUserId } = require('../db/orders');
 
-// -Function to create a new order-
-async function createOrder(userId, totalPrice, status) {
-    try {
-        const query = `
-            INSERT INTO orders (user_id, total_price, status)
-            VALUES ($1, $2, $3)
-            RETURNING *;
-        `;
-        const { rows } = await db.query(query, [userId, totalPrice, status]);
-        return rows[0];
-    } catch (error) {
-        throw error;
-    }
-}
+// -Route to create a new order-
+ordersRouter.post('/create-order', async (req, res, next) => {
+  try {
+    const { userId, totalPrice, status } = req.body;
+    const order = await createOrder(userId, totalPrice, status);
+    res.status(201).json({ success: true, order });
+  } catch (error) {
+    next(error);
+  }
+});
 
-// -Function to add products to an order-
-async function addProductsToOrder(orderId, icecreamId, quantity) {
-    try {
-        const query = `
-            INSERT INTO orders_products (order_id, icecream_id, quantity)
-            VALUES ($1, $2, $3);
-        `;
-        await db.query(query, [orderId, icecreamId, quantity]);
-    } catch (error) {
-        throw error;
-    }
-}
+// -Route to add products to an order-
+ordersRouter.post('/add-products', async (req, res, next) => {
+  try {
+    const { orderId, icecreamId, quantity } = req.body;
+    await addProductsToOrder(orderId, icecreamId, quantity);
+    res.json({ success: true, message: 'Products added to order successfully' });
+  } catch (error) {
+    next(error);
+  }
+});
 
-// -Function to get orders by user ID-
-async function getOrdersByUserId(userId) {
-    try {
-        const query = `
-            SELECT * FROM orders
-            WHERE user_id = $1;
-        `;
-        const { rows } = await db.query(query, [userId]);
-        return rows;
-    } catch (error) {
-        throw error;
-    }
-}
+// -Route to get orders by user ID-
+ordersRouter.get('/user-orders/:userId', async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    const orders = await getOrdersByUserId(userId);
+    res.json({ success: true, orders });
+  } catch (error) {
+    next(error);
+  }
+});
 
-module.exports = {
-    createOrder,
-    addProductsToOrder,
-    getOrdersByUserId
-};
+module.exports = ordersRouter;
+
