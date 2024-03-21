@@ -1,3 +1,7 @@
+main {
+  display: flex;
+}
+
 .IceCream-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -6,6 +10,11 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+main > aside {
+  min-width: 10vw;
+  min-height: 80vh;
 }
 
 article {
