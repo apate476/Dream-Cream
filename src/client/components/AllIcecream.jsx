@@ -49,6 +49,7 @@ function AllIceCream() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+      <h1></h1>
       <div className="IceCream-container">
         {filteredIceCream.map((ic) => {
           return (
@@ -56,7 +57,9 @@ function AllIceCream() {
               <img src={ic.imageUrl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
-              <button onClick={() => handleAddToCart(ic.id)}>Add to Cart</button>
+              <button onClick={() => handleAddToCart(ic.id)}>
+                Add to Cart
+              </button>
               <Link to={`/icecream/${ic.id}`} className="Link">
                 View Details
               </Link>
