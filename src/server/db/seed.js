@@ -57,11 +57,11 @@ const users = [
 const dropTables = async () => {
   try {
     await db.query(`
-        DROP TABLE IF EXISTS users;
-        DROP TABLE IF EXISTS icecream;
-        DROP TABLE IF EXISTS orders;
-        DROP TABLE IF EXISTS orders_products;
-        DROP TABLE IF EXISTS cart;
+        DROP TABLE IF EXISTS users ;
+        DROP TABLE IF EXISTS icecream ;
+        DROP TABLE IF EXISTS orders ;
+        DROP TABLE IF EXISTS orders_products ;
+        DROP TABLE IF EXISTS cart ;
         `);
   } catch (err) {
     throw err;
@@ -117,7 +117,6 @@ const createTables = async () => {
           icecream_id INTEGER REFERENCES icecream(id),
           quantity INTEGER DEFAULT 1
         )`);
-
   } catch (err) {
     throw err;
   }
@@ -126,7 +125,7 @@ const createTables = async () => {
 const addIceCreams = async () => {
   try {
     await db.query(`
-      INSERT INTO icecream(flavor, brand, price, size, imageUrl, nutrition)
+      INSERT INTO icecream(flavor, brand, price, size, "imageUrl", nutrition)
       VALUES 
         ('Oregon Strawberry', 'Tillamook', 5.32, '48 oz.', 'https://images.ctfassets.net/j8tkpy1gjhi5/7f03zWMMpf29F6zH5phUjj/e2057a368cffd22f034acbfcf5dccf07/BR22_48oz_Carton_OregonStrawberry_Rndr_FNL.png', 'https://i5.walmartimages.com/asr/ab80c04c-b13c-416f-8997-d2eb40308e9b.6ee4d8521470e2986ddba9379167242d.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
         ('Peaches & Cream', 'Tillamook', 5.32, '48 oz.', 'https://target.scene7.com/is/image/Target/GUEST_2f22b7ee-52b8-4686-a71a-6ea8dedda39a?wid=488&hei=488&fmt=pjpeg', 'https://i5.walmartimages.com/asr/faf76c76-2469-4ea5-9f06-a84ca861f65d.f1286b4a50d72cd3b642c2acb5bdbcb1.jpeg?odnHeight=768&odnWidth=768&odnWidth=768&odnBg=FFFFFF'),
