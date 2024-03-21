@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -13,6 +14,11 @@
 
 #comp-img {
   width: 250px;
+}
+
+main > aside {
+  min-width: 10vw;
+  min-height: 80vh;
 }
 
 /*   single icecream page   */
@@ -69,4 +75,10 @@
 
 .single-icecream-container button:hover {
   background-color: #cd853f;
+}
+
+footer {
+  min-height: 10vh;
+  background-color: grey;
+  width: 100;
 }

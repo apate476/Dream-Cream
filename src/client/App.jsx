@@ -18,6 +18,7 @@ function App() {
       </header>
 
       <main>
+        <aside></aside>
         <Routes>
           <Route path="/" element={<AllIceCream />} />
           <Route path="/icecream/:id" element={<SingleIceCream />} />
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
+        <aside></aside>
       </main>
 
       <footer></footer>
