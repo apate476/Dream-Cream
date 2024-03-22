@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "../style.css";
 
 function Account({ token }) {
   const [accountInfo, setAccountInfo] = useState(null);
@@ -35,6 +36,10 @@ function Account({ token }) {
           <p>First Name: {accountInfo.firstname}</p>
           <p>Last Name: {accountInfo.lastname}</p>
           <p>Email: {accountInfo.email}</p>
+          <p>
+            Address: {accountInfo.address}, {accountInfo.city},{" "}
+            {accountInfo.state} {accountInfo.zip}
+          </p>
         </div>
       ) : (
         <p>Loading user information...</p>
