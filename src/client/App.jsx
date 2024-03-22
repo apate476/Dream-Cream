@@ -6,6 +6,7 @@ import AddUser from "./components/Register";
 import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
+import Account from "./components/Account";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -41,8 +42,8 @@ function App() {
             element={<AddUser setToken={setToken} signin={signin} />}
           />
           <Route
-            path="/api/account"
-            element={<Account token={token} loggedIn={loggedIn} />}
+            path="/api/users/account"
+            element={<Account token={token} />}
           />
           <Route path="/api/orders/checkout" element={<Cart />} />
           <Route path="/about-us" element={<CompanyDescription />} />

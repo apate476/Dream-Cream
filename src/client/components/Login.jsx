@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const Login = ({ signin }) => {
+const Login = ({ signin, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -31,6 +31,9 @@ const Login = ({ signin }) => {
       });
       const result = await response.json();
 
+      const token = result.token;
+      console.log(token);
+      setToken(token);
       setMessage(result.message);
       signin();
       navigate("/");

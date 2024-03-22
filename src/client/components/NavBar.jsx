@@ -28,6 +28,7 @@ export default function NavBar({ loggedIn, logout }) {
         {}
         <div className={isOpen ? "menu open" : "menu"}>
           <Link to="/">Home</Link>
+          {loggedIn && <Link to="/api/users/account">Account</Link>}
           {!loggedIn && <Link to="api/users/register">Register</Link>}
           {!loggedIn && <Link to="/api/users/login">Login</Link>}
           <Link to="/Cart">Cart</Link>
