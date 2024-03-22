@@ -35,6 +35,13 @@ export default function NewFlavorForm() {
       nutrition,
     };
 
+    setFlavor("");
+    setBrand("");
+    setSize("");
+    setImageUrl("");
+    setPrice("");
+    setNutrition("");
+
     console.log(payload);
 
     try {
@@ -42,7 +49,7 @@ export default function NewFlavorForm() {
     } catch (error) {
       throw error;
     }
-    navigate("/");
+    // navigate("/");
   }
 
   return (
