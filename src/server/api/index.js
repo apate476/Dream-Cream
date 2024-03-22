@@ -5,12 +5,8 @@ const jwt = require("jsonwebtoken");
 const usersRouter = require("./users");
 const iceCreamRouter = require("./ice_cream");
 const ordersRouter = require("./orders");
-const cartRouter = require('./cart');
-
-apiRouter.use("/users", usersRouter);
-apiRouter.use("/ice_cream", iceCreamRouter);
-apiRouter.use("/orders", ordersRouter);
-apiRouter.use('/cart', cartRouter);
+const cartRouter = require("./cart");
+const { getUserByEmail } = require("../db/users");
 
 apiRouter.use(async (req, res, next) => {
   const auth = req.header("Authorization");
@@ -24,8 +20,15 @@ apiRouter.use(async (req, res, next) => {
     try {
       // Verify
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
-      next();
+
+      const user = await getUserByEmail(decoded.email);
+
+      if (user) {
+        req.user = user;
+        next();
+      } else {
+        res.status(401).send("invalid login session or session expired");
+      }
     } catch (error) {
       next(error);
     }
@@ -36,6 +39,11 @@ apiRouter.use(async (req, res, next) => {
     });
   }
 });
+
+apiRouter.use("/users", usersRouter);
+apiRouter.use("/ice_cream", iceCreamRouter);
+apiRouter.use("/orders", ordersRouter);
+apiRouter.use("/cart", cartRouter);
 
 apiRouter.use((err, req, res, next) => {
   console.error(err);
