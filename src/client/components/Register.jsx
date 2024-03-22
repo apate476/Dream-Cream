@@ -7,8 +7,8 @@ import axios from "axios";
 export default function AddUser({ setToken, signin }) {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
@@ -33,8 +33,8 @@ export default function AddUser({ setToken, signin }) {
     event.preventDefault();
 
     const payload = {
-      firstName,
-      lastName,
+      firstname,
+      lastname,
       email,
       password,
       address,
@@ -50,59 +50,65 @@ export default function AddUser({ setToken, signin }) {
       console.log(registration.token);
       setToken(registration.token);
       signin();
-      navigate("/");
     } catch (err) {
       throw err;
     }
+
+    navigate("/api/users/login");
   }
 
   return (
     <>
-      <h2>Register Here!</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </label>
-        <label>
-          Email:
-          <input value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          Address:
-          <input value={address} onChange={(e) => setAddress(e.target.value)} />
-        </label>
-        <label>
-          City:
-          <input value={city} onChange={(e) => setCity(e.target.value)} />
-        </label>
-        <label>
-          State:
-          <input value={state} onChange={(e) => setState(e.target.value)} />
-        </label>
-        <label>
-          ZIP Code:
-          <input value={zip} onChange={(e) => setZip(e.target.value)} />
-        </label>
-        <button type="submit">Register</button>
-      </form>
+      <div>
+        <h2>Register Here!</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            First Name:
+            <input
+              value={firstname}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </label>
+          <label>
+            Last Name:
+            <input
+              value={lastname}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </label>
+          <label>
+            Email:
+            <input value={email} onChange={(e) => setEmail(e.target.value)} />
+          </label>
+          <label>
+            Password:
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <label>
+            Address:
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </label>
+          <label>
+            City:
+            <input value={city} onChange={(e) => setCity(e.target.value)} />
+          </label>
+          <label>
+            State:
+            <input value={state} onChange={(e) => setState(e.target.value)} />
+          </label>
+          <label>
+            ZIP Code:
+            <input value={zip} onChange={(e) => setZip(e.target.value)} />
+          </label>
+          <button type="submit">Register</button>
+        </form>
+      </div>
     </>
   );
 }

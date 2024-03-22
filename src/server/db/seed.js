@@ -90,7 +90,7 @@ const createTables = async () => {
           brand TEXT,
           price DECIMAL(5, 2),
           size TEXT,
-          "imageUrl" TEXT,
+          imageUrl TEXT,
           nutrition TEXT
         )`);
 

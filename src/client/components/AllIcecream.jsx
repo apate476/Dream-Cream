@@ -54,7 +54,7 @@ function AllIceCream() {
         {filteredIceCream.map((ic) => {
           return (
             <article key={ic.id}>
-              <img src={ic.imageUrl} alt="" />
+              <img src={ic.imageurl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
               <button onClick={() => handleAddToCart(ic.id)}>
