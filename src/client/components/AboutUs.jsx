@@ -1,9 +1,20 @@
-import React from 'react';
-import "./aboutUs.css";
-
+import React, { useEffect } from 'react';
+import './aboutUs.css';
+import backgroundMusic from './backgroundMusic.mp3';
 
 const CompanyDescription = () => {
-  const companyName = 'Dream Cream'; 
+  const companyName = 'Dream Cream';
+
+  useEffect(() => {
+    const audio = new Audio(backgroundMusic);
+    audio.loop = true;
+    audio.play();
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []);
 
   return (
     <div className="company-description">
