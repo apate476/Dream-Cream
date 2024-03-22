@@ -22,7 +22,6 @@
     margin-bottom: 0;
   }
   
-  /* Additional Style for headings */
   .company-description h1 {
     font-size: 28px;
     color: #333;
@@ -47,8 +46,8 @@ body {
   }
 
 body {
-  background-color: #f7eded; /* Soft pinkish tone */
-  font-family: Arial, sans-serif; /* Example font family */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  background-color: #f7eded;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }

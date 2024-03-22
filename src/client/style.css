@@ -78,7 +78,15 @@ main > aside {
 }
 
 footer {
+  padding: 10px;
   min-height: 10vh;
   background-color: grey;
   width: 100;
+  text-align: center;
+  transition: color 0.3s;
 }
+
+footer:hover {
+color: red;
+}
+
