@@ -21,7 +21,7 @@ function AllIceCream() {
     fetchIceCream();
   }, []);
 
-  console.log(IceCream);
+  // console.log(IceCream);
 
   const filteredIceCream = IceCream.filter(
     (ic) =>
@@ -54,7 +54,7 @@ function AllIceCream() {
         {filteredIceCream.map((ic) => {
           return (
             <article key={ic.id}>
-              <img src={ic.imageurl} alt="" />
+              <img src={ic.imageUrl} alt="" />
               <h3>{ic.flavor}</h3>
               <h4>{ic.brand}</h4>
               <button onClick={() => handleAddToCart(ic.id)}>
