@@ -21,6 +21,7 @@ function App() {
 
   function logout() {
     setLoggedIn(false);
+    localStorage.removeItem("token");
   }
 
   return (
@@ -58,8 +59,8 @@ function App() {
         <br></br>
         Contact us at 1-555-6969
         <br></br>
-        Address: UAC Mars Base 6666 Hellas Planitia, Impact Basin, Mars, Milky Way Galaxy
-
+        Address: UAC Mars Base 6666 Hellas Planitia, Impact Basin, Mars, Milky
+        Way Galaxy
       </footer>
     </>
   );
