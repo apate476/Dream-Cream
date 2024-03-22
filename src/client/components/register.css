@@ -1,20 +1,23 @@
 main > div {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
 }
 
 form {
   max-width: 400px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 2rem;
 }
 
 h2 {
   text-align: center;
+  font-size: 3rem;
+  margin-right: 2rem;
 }
 
 label {

@@ -50,7 +50,6 @@ export default function AddUser({ setToken, signin }) {
       console.log(registration.token);
       setToken(registration.token);
       signin();
-      navigate("/");
     } catch (err) {
       throw err;
     }
