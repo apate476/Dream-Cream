@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -8,8 +7,8 @@ import axios from "axios";
 export default function AddUser({ setToken }) {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
@@ -34,8 +33,8 @@ export default function AddUser({ setToken }) {
     event.preventDefault();
 
     const payload = {
-      firstName,
-      lastName,
+      firstname,
+      lastname,
       email,
       password,
       address,
@@ -53,6 +52,8 @@ export default function AddUser({ setToken }) {
     } catch (err) {
       throw err;
     }
+
+    // navigate("/api/users/login");
   }
 
   return (
@@ -62,14 +63,14 @@ export default function AddUser({ setToken }) {
         <label>
           First Name:
           <input
-            value={firstName}
+            value={firstname}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </label>
         <label>
           Last Name:
           <input
-            value={lastName}
+            value={lastname}
             onChange={(e) => setLastName(e.target.value)}
           />
         </label>
