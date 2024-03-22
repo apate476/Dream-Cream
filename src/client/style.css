@@ -21,6 +21,11 @@ main > aside {
   min-height: 80vh;
 }
 
+main {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 /*   single icecream page   */
 
 .single-icecream-container {
@@ -87,5 +92,5 @@ footer {
 }
 
 footer:hover {
-color: red;
+  color: red;
 }
