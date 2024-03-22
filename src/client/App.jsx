@@ -47,7 +47,7 @@ function App() {
             path="/api/users/account"
             element={<Account token={token} />}
           />
-          <Route path="/api/orders/checkout" element={<Cart />} />
+          <Route path="/Cart" element={<Cart />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>

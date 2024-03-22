@@ -30,9 +30,10 @@ const Login = ({ signin, setToken }) => {
         }),
       });
       const result = await response.json();
-      localStorage.setItem("token", token);
+
       const token = result.token;
       console.log(token);
+      localStorage.setItem("token", token);
       setToken(token);
       setMessage(result.message);
       signin();
