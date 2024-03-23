@@ -60,7 +60,7 @@ export default function AddUser({ setToken, signin }) {
 
   return (
     <>
-      <div>
+      <div className="registerCard">
         <h2>Register Here!</h2>
         <form onSubmit={handleSubmit}>
           <label>

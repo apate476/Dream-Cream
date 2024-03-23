@@ -27,6 +27,8 @@ function App() {
   return (
     <>
       <header>
+        <div></div>
+        <h1>Dream Cream</h1>
         <NavBar loggedIn={loggedIn} logout={logout} />
       </header>
 
