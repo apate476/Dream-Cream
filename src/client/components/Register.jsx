@@ -56,7 +56,7 @@ export default function AddUser({ setToken, signin }) {
       throw err;
     }
 
-    navigate("/api/users/login");
+    navigate("/");
   }
 
   return (
