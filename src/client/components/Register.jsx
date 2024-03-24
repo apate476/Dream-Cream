@@ -23,6 +23,7 @@ export default function AddUser({ setToken, signin }) {
         payload
       );
       const result = response.data;
+      localStorage.setItem("token", token);
       return result;
     } catch (err) {
       throw err;
@@ -59,7 +60,7 @@ export default function AddUser({ setToken, signin }) {
 
   return (
     <>
-      <div>
+      <div className="registerCard">
         <h2>Register Here!</h2>
         <form onSubmit={handleSubmit}>
           <label>

@@ -21,11 +21,14 @@ function App() {
 
   function logout() {
     setLoggedIn(false);
+    localStorage.removeItem("token");
   }
 
   return (
     <>
       <header>
+        <div></div>
+        <h1>Dream Cream</h1>
         <NavBar loggedIn={loggedIn} logout={logout} />
       </header>
 
@@ -46,7 +49,7 @@ function App() {
             path="/api/users/account"
             element={<Account token={token} />}
           />
-          <Route path="/api/orders/checkout" element={<Cart />} />
+          <Route path="/Cart" element={<Cart />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
@@ -58,8 +61,8 @@ function App() {
         <br></br>
         Contact us at 1-555-6969
         <br></br>
-        Address: UAC Mars Base 6666 Hellas Planitia, Impact Basin, Mars, Milky Way Galaxy
-
+        Address: UAC Mars Base 6666 Hellas Planitia, Impact Basin, Mars, Milky
+        Way Galaxy
       </footer>
     </>
   );
