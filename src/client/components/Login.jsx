@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const Login = ({ signin, setToken, cookies }) => {
+const Login = ({ signin, setToken, cookies, token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -33,7 +33,7 @@ const Login = ({ signin, setToken, cookies }) => {
       if (!response.ok) {
         throw result;
       }
-      cookies.set(login_token, result.token);
+      cookies.set("login_token", result.token);
       console.log(token);
       localStorage.setItem("token", token);
       setToken(token);

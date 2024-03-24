@@ -7,13 +7,22 @@ import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
 import Account from "./components/Account";
+import Cookies from "universal-cookie";
 
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [token, setToken] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const cookies = new Cookies();
+  useEffect(() => {
+    const login_token = cookies.get("login_token");
+    if (login_token) {
+      setToken(login_token);
+    }
+  }, []);
 
   function signin() {
     setLoggedIn(true);
@@ -39,11 +48,25 @@ function App() {
           <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route
             path="/api/users/login"
-            element={<Login setToken={setToken} signin={signin} />}
+            element={
+              <Login
+                cookies={cookies}
+                token={token}
+                setToken={setToken}
+                signin={signin}
+              />
+            }
           />
           <Route
             path="/api/users/register"
-            element={<AddUser setToken={setToken} signin={signin} />}
+            element={
+              <AddUser
+                cookies={cookies}
+                token={token}
+                setToken={setToken}
+                signin={signin}
+              />
+            }
           />
           <Route
             path="/api/users/account"
