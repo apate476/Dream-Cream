@@ -23,6 +23,7 @@ export default function AddUser({ setToken, signin }) {
         payload
       );
       const result = response.data;
+      const token = result.token;
       localStorage.setItem("token", token);
       return result;
     } catch (err) {
