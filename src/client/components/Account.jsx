@@ -13,7 +13,7 @@ function Account({ token }) {
         }
         const { data } = await axios.get("http://localhost:3000/api/users/me", {
           headers: {
-            Authorization: `Bearer` + token,
+            Authorization: `Bearer ` + token,
           },
         });
 
