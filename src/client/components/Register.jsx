@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./register.css";
 import axios from "axios";
 
-export default function AddUser({ setToken, signin }) {
+export default function AddUser({ setToken, signin, cookies }) {
   const navigate = useNavigate();
 
   const [firstname, setFirstName] = useState("");
@@ -50,6 +50,7 @@ export default function AddUser({ setToken, signin }) {
     try {
       const registration = await register(payload);
       console.log(registration.token);
+      cookies.set("login_token", registration.token);
       setToken(registration.token);
       signin();
     } catch (err) {

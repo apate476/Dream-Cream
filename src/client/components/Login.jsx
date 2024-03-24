@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const Login = ({ signin, setToken }) => {
+const Login = ({ signin, setToken, cookies }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -30,8 +30,10 @@ const Login = ({ signin, setToken }) => {
         }),
       });
       const result = await response.json();
-
-      const token = result.token;
+      if (!response.ok) {
+        throw result;
+      }
+      cookies.set(login_token, result.token);
       console.log(token);
       localStorage.setItem("token", token);
       setToken(token);
