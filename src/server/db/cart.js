@@ -61,6 +61,8 @@ async function getCartItemsByUserId(userId) {
       `
             SELECT * 
             FROM cart
+            Join icecream
+            ON cart.icecream_id = icecream.id
             WHERE user_id=$1;`,
       [userId]
     );
