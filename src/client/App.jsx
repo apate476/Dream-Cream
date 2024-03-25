@@ -7,6 +7,7 @@ import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
 import Account from "./components/Account";
+import UpdateForm from "./components/UpdateForm";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -35,7 +36,7 @@ function App() {
       <main>
         <aside></aside>
         <Routes>
-          <Route path="/" element={<AllIceCream />} />
+          <Route path="/" element={<AllIceCream token={token} />} />
           <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route
             path="/api/users/login"
@@ -48,6 +49,10 @@ function App() {
           <Route
             path="/api/users/account"
             element={<Account token={token} />}
+          />
+          <Route
+            path="/api/users/update-profile"
+            element={<UpdateForm token={token} />}
           />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/about-us" element={<CompanyDescription />} />

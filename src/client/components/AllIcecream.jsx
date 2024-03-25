@@ -2,24 +2,27 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./allIceCream.css";
 import { Link } from "react-router-dom";
-// import { addToCart } from "../../server/db/cart";
-// import { useNavigate } from "react-router-dom";
 
-function AllIceCream() {
+function AllIceCream({ userId, token }) {
   const [IceCream, setIceCream] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchIceCream() {
-      const { data } = await axios.get("/api/ice_cream");
-
-      setIceCream(data);
-    }
+    const fetchIceCream = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get("/api/ice_cream");
+        setIceCream(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching ice cream:", error);
+        setIsLoading(false);
+      }
+    };
 
     fetchIceCream();
-  }, []);
+  }, [userId, token]);
 
   // console.log(IceCream);
 
@@ -29,9 +32,13 @@ function AllIceCream() {
       ic.flavor.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleAddToCart = async (iceCreamId) => {
+  const handleAddToCart = async (icecreamId) => {
     try {
-      // await addToCart(userId, iceCreamId);
+      await axios.post(
+        `/api/cart/add-to-cart`,
+        { icecreamId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       alert("Item added to cart successfully!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
@@ -49,10 +56,11 @@ function AllIceCream() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <h1></h1>
       <div className="IceCream-container">
-        {filteredIceCream.map((ic) => {
-          return (
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          filteredIceCream.map((ic) => (
             <article key={ic.id}>
               <img src={ic.imageurl} alt="" />
               <h3>{ic.flavor}</h3>
@@ -64,8 +72,8 @@ function AllIceCream() {
                 View Details
               </Link>
             </article>
-          );
-        })}
+          ))
+        )}
       </div>
     </div>
   );

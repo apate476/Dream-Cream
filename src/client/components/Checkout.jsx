@@ -1,26 +1,15 @@
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-// import { clearCart } from '../db/cart';
-// import { createOrder, addProductsToOrder } from '../db/orders';
-
-const Checkout = ({ userId }) => {
+const Checkout = ({ userId, token }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const timeoutIdRef = useRef(null);
 
-  // -Function to fetch cart items from the server-
-  const fetchCartItems = async () => {
-    try {
-      const response = await axios.get(`/api/cart/user-cart/${userId}`);
-      setCartItems(response.data);
-    } catch (error) {
-      console.error('Error fetching cart items:', error);
-    }
-  };
-
-  // -Function to calculate total price-
   const calculateTotalPrice = () => {
     let total = 0;
     cartItems.forEach((item) => {
@@ -30,51 +19,114 @@ const Checkout = ({ userId }) => {
   };
 
   useEffect(() => {
-    fetchCartItems();
-  }, [userId]);
+    const fetchCartItems = async () => {
+      try {
+        if (!token) return;
+        const response = await axios.get(`/api/cart/user-cart/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCartItems(response.data);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+        setError("Failed to fetch cart items. Please try again later.");
+      }
+    };
 
-  // -Effect to recalculate total price when cart items change-
+    fetchCartItems();
+  }, [userId, token]);
+
   useEffect(() => {
     calculateTotalPrice();
   }, [cartItems]);
 
-  // -Function to handle checkout process-
   const handleCheckout = async () => {
     try {
-      // -Create a new order-
-      const order = await createOrder(userId, totalPrice, 'Pending');
+      const orderResponse = await axios.post(
+        "/api/orders/create-order",
+        {
+          userId,
+          totalPrice,
+          status: "Pending",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const orderId = orderResponse.data.order.id;
 
-      // -Add each product in the cart to the order-
       await Promise.all(
         cartItems.map(async (item) => {
-          await addProductsToOrder(order.id, item.id, item.quantity);
+          await axios.post(
+            "/api/orders/add-products",
+            {
+              orderId,
+              icecreamId: item.id,
+              quantity: item.quantity,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
         })
       );
 
-      // -Clear the cart-
-      await clearCart(userId);
+      await axios.delete(`/api/cart/clear-cart/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      // -Redirect back to Cart.jsx-
-      navigate('/Cart');
+      setOrderPlaced(true);
+
+      timeoutIdRef.current = setTimeout(() => {
+        navigate("/account");
+      }, 4000);
     } catch (error) {
-      console.error('Error during checkout:', error);
+      console.error("Error during checkout:", error);
+      setError(
+        "Failed to complete the checkout process. Please try again later."
+      );
     }
   };
+
+  useEffect(() => {
+    return () => {
+      setOrderPlaced(false);
+      clearTimeout(timeoutIdRef.current);
+    };
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
       <h2>Checkout</h2>
-      <ul>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            <span>{item.flavor}</span>
-            <span>{item.price}</span>
-            <span>Quantity: {item.quantity}</span>
-          </li>
-        ))}
-      </ul>
-      <div>Total Price: ${totalPrice}</div>
-      <button onClick={handleCheckout}>Purchase</button>
+      {cartItems.length > 0 ? (
+        <>
+          <ul>
+            {cartItems.map((item) => (
+              <li key={item.id}>
+                <span>{item.flavor}</span>
+                <span>${item.price}</span>
+                <span>{item.quantity}</span>
+              </li>
+            ))}
+          </ul>
+          <div>Total Price: ${totalPrice}</div>
+          <button onClick={handleCheckout}>Purchase</button>
+          {orderPlaced && <p>Order Successfully Placed!</p>}
+        </>
+      ) : (
+        <p>Your cart is empty. Please add items to proceed with checkout.</p>
+      )}
     </div>
   );
 };
