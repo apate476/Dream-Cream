@@ -57,16 +57,17 @@ async function removeFromCart(userId, icecreamId) {
 
 async function getCartItemsByUserId(userId) {
   try {
-    // -Retrieve all items in the user's cart-
-    const query = `
+    const { rows } = await db.query(
+      `
             SELECT * 
-            FROM cart 
-            WHERE user_id = $1;
-        `;
-    const { rows } = await db.query(query, [userId]);
+            FROM cart
+            WHERE user_id=$1;`,
+      [userId]
+    );
+
     return rows;
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    throw err;
   }
 }
 

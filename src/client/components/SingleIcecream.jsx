@@ -24,24 +24,16 @@ function SingleIceCream({ token, userId }) {
     }
 
     fetchSingleIceCream();
-  }, [icecreamId]);
+  }, [icecreamId, userId]);
 
   console.log("Single IceCream:", icecream);
 
   const handleAddToCart = async () => {
     try {
-      if (!token) {
-        alert("Please log in to add items to cart.");
-        return;
-      }
       await axios.post(
         "/api/cart/add-to-cart",
-        { userId: userId, icecreamId: icecreamId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { icecreamId },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Item added to cart successfully!");
     } catch (error) {
