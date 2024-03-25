@@ -37,7 +37,10 @@ function App() {
         <aside></aside>
         <Routes>
           <Route path="/" element={<AllIceCream token={token} />} />
-          <Route path="/icecream/:id" element={<SingleIceCream />} />
+          <Route
+            path="/icecream/:id"
+            element={<SingleIceCream token={token} />}
+          />
           <Route
             path="/api/users/login"
             element={<Login setToken={setToken} signin={signin} />}
@@ -54,7 +57,7 @@ function App() {
             path="/api/users/update-profile"
             element={<UpdateForm token={token} />}
           />
-          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Cart" element={<Cart token={token} />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
