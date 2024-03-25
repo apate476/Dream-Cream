@@ -6,6 +6,7 @@ const {
   getUser,
   getUserByEmail,
   getAllUsers,
+  updateUser,
 } = require("../db/users");
 
 const jwt = require("jsonwebtoken");
@@ -24,6 +25,29 @@ usersRouter.get("/", async (req, res, next) => {
 
 usersRouter.get("/me", async (req, res, next) => {
   res.send(req.user);
+});
+
+usersRouter.put("/me", async (req, res, next) => {
+  try {
+    // Extract the updated user information from the request body
+    const updatedInfo = req.body;
+
+    // Ensure the request has a user object (usually set by authentication middleware)
+    if (!req.user) {
+      return res.status(401).send({ message: "Unauthorized" });
+    }
+
+    // Update the user in the database
+    const updatedUser = await updateUser(req.user.id, updatedInfo);
+
+    // Send the updated user information back to the client
+    res.send({
+      message: "User information updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 usersRouter.post("/login", async (req, res, next) => {

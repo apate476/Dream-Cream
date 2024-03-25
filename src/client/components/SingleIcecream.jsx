@@ -2,9 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../style.css";
-// import { addToCart } from "../../server/db/cart";
 
-function SingleIceCream() {
+function SingleIceCream({ token, userId }) {
   const params = useParams();
   const icecreamId = params.id;
 
@@ -25,13 +24,17 @@ function SingleIceCream() {
     }
 
     fetchSingleIceCream();
-  }, [icecreamId]);
+  }, [icecreamId, userId]);
 
   console.log("Single IceCream:", icecream);
 
   const handleAddToCart = async () => {
     try {
-      // await addToCart(userId, icecreamId);
+      await axios.post(
+        "/api/cart/add-to-cart",
+        { icecreamId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       alert("Item added to cart successfully!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
