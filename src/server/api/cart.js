@@ -17,7 +17,10 @@ cartRouter.use("/:userId/:icecreamId", (req, res, next) => {
 // -Route to add an item to the cart-
 cartRouter.post("/add-to-cart", async (req, res, next) => {
   try {
-    const { userId, icecreamId } = req.params;
+    const { icecreamId } = req.body;
+    const userId = req.user.id;
+    console.log("icecream:", icecreamId);
+    console.log("user:", userId);
     await addToCart(userId, icecreamId);
     res
       .status(201)

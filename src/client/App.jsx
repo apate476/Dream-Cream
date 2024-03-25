@@ -36,7 +36,7 @@ function App() {
       <main>
         <aside></aside>
         <Routes>
-          <Route path="/" element={<AllIceCream />} />
+          <Route path="/" element={<AllIceCream token={token} />} />
           <Route path="/icecream/:id" element={<SingleIceCream />} />
           <Route
             path="/api/users/login"

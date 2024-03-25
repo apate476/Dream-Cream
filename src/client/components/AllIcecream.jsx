@@ -34,7 +34,11 @@ function AllIceCream({ userId, token }) {
 
   const handleAddToCart = async (icecreamId) => {
     try {
-      await axios.post(`/api/cart/add-to-cart/${userId}/${icecreamId}`);
+      await axios.post(
+        `/api/cart/add-to-cart`,
+        { icecreamId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       alert("Item added to cart successfully!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
