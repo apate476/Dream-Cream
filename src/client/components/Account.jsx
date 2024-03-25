@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style.css";
+import { useNavigate } from "react-router-dom";
 
 function Account({ token }) {
   const [accountInfo, setAccountInfo] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getAccountInfo() {
@@ -28,6 +30,10 @@ function Account({ token }) {
     getAccountInfo();
   }, [token]);
 
+  const handleUpdateProfile = () => {
+    navigate("/api/users/update-profile");
+  };
+
   return (
     <div className="account-container">
       <h2>Account Information</h2>
@@ -40,6 +46,7 @@ function Account({ token }) {
             Address: {accountInfo.address}, {accountInfo.city},{" "}
             {accountInfo.state} {accountInfo.zip}
           </p>
+          <button onClick={handleUpdateProfile}>Update Profile</button>
         </div>
       ) : (
         <p>Loading user information...</p>

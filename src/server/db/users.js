@@ -81,9 +81,59 @@ const getAllUsers = async () => {
   }
 };
 
+const updateUser = async (userId, updatedInfo) => {
+  // Prepare the SQL query and parameters
+  const { firstname, lastname, email, password, address, city, state, zip } =
+    updatedInfo;
+  const query = `
+     UPDATE users
+     SET firstname = COALESCE($1, firstname),
+         lastname = COALESCE($2, lastname),
+         email = COALESCE($3, email),
+         password = COALESCE($4, password),
+         address = COALESCE($5, address),
+         city = COALESCE($6, city),
+         state = COALESCE($7, state),
+         zip = COALESCE($8, zip)
+     WHERE id = $9
+     RETURNING *`;
+  const params = [
+    firstname,
+    lastname,
+    email,
+    password,
+    address,
+    city,
+    state,
+    zip,
+    userId,
+  ];
+
+  // Hash the password if it's provided
+  if (password) {
+    const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+    params[3] = hashedPassword; // Replace the plain text password with the hashed one
+  }
+
+  try {
+    const {
+      rows: [user],
+    } = await db.query(query, params);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
+  } catch (err) {
+    throw err;
+  }
+};
+
 module.exports = {
   createUser,
   getUser,
   getUserByEmail,
   getAllUsers,
+  updateUser,
 };
