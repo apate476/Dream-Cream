@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
 import Account from "./components/Account";
 import UpdateForm from "./components/UpdateForm";
+import Checkout from "./components/Checkout";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -61,6 +62,7 @@ function App() {
             element={<UpdateForm token={token} />}
           />
           <Route path="/Cart" element={<Cart token={token} />} />
+          <Route path="/Checkout" element={<Checkout token={token} />} />
           <Route path="/about-us" element={<CompanyDescription />} />
           <Route path="/api/users/admin" element={<NewFlavorForm />} />
         </Routes>
