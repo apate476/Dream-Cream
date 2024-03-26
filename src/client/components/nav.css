@@ -4,7 +4,7 @@ header {
 
 .navbar {
     z-index: 1;
-    position: relative;
+    position: absolute;
     background-color: grey;
     padding: 10px;
     max-width: 100px;
