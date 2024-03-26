@@ -59,7 +59,7 @@ const Login = ({ signin, setToken, token }) => {
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="loginform">
         <div>
           <label htmlFor="email">Email:</label>
           <input
