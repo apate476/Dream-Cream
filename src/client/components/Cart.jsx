@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style.css";
+import "./cart.css";
 
 const Cart = ({ token, userId }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -48,7 +49,7 @@ const Cart = ({ token, userId }) => {
 
   return (
     <div className="ShoppingCart-container">
-      <h2>Shopping Cart</h2>
+      <h4>Shopping Cart</h4>
       {error && <div className="error">{error}</div>}
       <div className="cart-items-container">
         {cartItems.length > 0 ? (
