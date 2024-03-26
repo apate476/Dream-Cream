@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [loggedIn, setLoggedIn] = useState(false);
 
   function signin() {
