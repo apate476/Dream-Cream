@@ -59,7 +59,7 @@ async function getCartItemsByUserId(userId) {
   try {
     const { rows } = await db.query(
       `
-            SELECT * 
+            SELECT cart.quantity, icecream.* 
             FROM cart
             Join icecream
             ON cart.icecream_id = icecream.id
