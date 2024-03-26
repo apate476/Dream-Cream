@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../style.css";
 
 const Cart = ({ token, userId }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -49,31 +50,31 @@ const Cart = ({ token, userId }) => {
   };
 
   return (
-    <div>
+    <div className="ShoppingCart-container">
       <h2>Shopping Cart</h2>
-      {error && <div>{error}</div>}
-      {cartItems.length > 0 ? (
-        <>
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.id}>
-                <span>{item.flavor}</span>
-                <span>${item.price}</span>
-                <span>{item.quantity}</span>
-                <button onClick={() => handleRemoveFromCart(item.id)}>
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-          <div>Total Price: ${totalPrice}</div>
-          <Link to="/Checkout">
-            <button>Proceed to Checkout</button>
-          </Link>
-        </>
-      ) : (
-        <p>Your cart is empty. Please add items to proceed with checkout.</p>
-      )}
+      {error && <div className="error">{error}</div>}
+      <div className="cart-items-container">
+        {cartItems.length > 0 ? (
+          cartItems.map((item) => (
+            <div key={item.id} className="cart-item">
+              <p>Flavor: {item.flavor}</p>
+              <p>Price: ${item.price}</p>
+              <p>Quantity: {item.quantity}</p>
+              <button onClick={() => handleRemoveFromCart(item.id)}>
+                Remove
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="empty-cart">
+            Your cart is empty. Please add items to proceed with checkout.
+          </p>
+        )}
+      </div>
+      <div className="total-price">Total Price: ${totalPrice}</div>
+      <Link to="/Checkout">
+        <button className="checkout-button">Proceed to Checkout</button>
+      </Link>
     </div>
   );
 };

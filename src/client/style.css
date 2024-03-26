@@ -132,3 +132,91 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
+/*   Cart.jsx   */
+
+.ShoppingCart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f9e8ff, #d5f7ff);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto;
+}
+
+.ShoppingCart-container h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-right: 2rem;
+}
+
+.ShoppingCart-container .error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.ShoppingCart-container .cart-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ShoppingCart-container .cart-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.ShoppingCart-container .cart-item p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.ShoppingCart-container .cart-item button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  align-self: flex-end;
+  width: auto;
+  margin-top: 0px;
+}
+
+.ShoppingCart-container .total-price {
+  text-align: right;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.ShoppingCart-container .checkout-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.ShoppingCart-container .checkout-button:hover {
+  background-color: #45a049;
+}
+
+.ShoppingCart-container .empty-cart {
+  text-align: center;
+  margin-top: 20px;
+}
