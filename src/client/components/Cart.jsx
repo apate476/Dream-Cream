@@ -54,6 +54,7 @@ const Cart = ({ token, userId }) => {
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
             <div key={item.id} className="cart-item">
+              <img src={item.imageurl} />
               <p>Flavor: {item.flavor}</p>
               <p>Price: ${item.price}</p>
               <p>Quantity: {item.quantity}</p>

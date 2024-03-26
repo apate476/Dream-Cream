@@ -36,7 +36,7 @@ function Account({ token }) {
 
   return (
     <div className="account-container">
-      <h2>Account Information</h2>
+      <h2 className="account-header">Account Information</h2>
       {accountInfo ? (
         <div>
           <p>First Name: {accountInfo.firstname}</p>
