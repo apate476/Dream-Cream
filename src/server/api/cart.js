@@ -44,9 +44,8 @@ cartRouter.delete("/remove-from-cart", async (req, res, next) => {
 // -Route to get all items in the cart for a specific user-
 cartRouter.get("/user-cart", async (req, res, next) => {
   try {
-    
     const userId = req.user.id;
-    const cartItems = await getCartItemsByUserId(userId, icecreamId);
+    const cartItems = await getCartItemsByUserId(userId);
     res.json(cartItems);
   } catch (error) {
     next(error);
