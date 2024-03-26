@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
 
-const Login = ({ signin, setToken }) => {
+const Login = ({ signin, setToken, token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -31,11 +31,12 @@ const Login = ({ signin, setToken }) => {
         }),
       });
       const result = await response.json();
-
-      const token = result.token;
-      console.log(token);
-      localStorage.setItem("token", token);
-      setToken(token);
+      if (!response.ok) {
+        throw result;
+      }
+      console.log(result.token);
+      localStorage.setItem("token", result.token);
+      setToken(result.token);
       setMessage(result.message);
       signin();
       navigate("/");

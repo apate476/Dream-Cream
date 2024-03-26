@@ -13,15 +13,14 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
-  const [token, setToken] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   function signin() {
-    setLoggedIn(true);
+    setToken(localStorage.getItem("token"));
   }
 
   function logout() {
-    setLoggedIn(false);
+    setToken(null);
     localStorage.removeItem("token");
   }
 
@@ -30,7 +29,7 @@ function App() {
       <header>
         <div></div>
         <h1>Dream Cream</h1>
-        <NavBar loggedIn={loggedIn} logout={logout} />
+        <NavBar loggedIn={token != null} logout={logout} />
       </header>
 
       <main>
@@ -43,11 +42,15 @@ function App() {
           />
           <Route
             path="/api/users/login"
-            element={<Login setToken={setToken} signin={signin} />}
+            element={
+              <Login token={token} setToken={setToken} signin={signin} />
+            }
           />
           <Route
             path="/api/users/register"
-            element={<AddUser setToken={setToken} signin={signin} />}
+            element={
+              <AddUser token={token} setToken={setToken} signin={signin} />
+            }
           />
           <Route
             path="/api/users/account"
