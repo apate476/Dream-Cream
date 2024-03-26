@@ -9,10 +9,7 @@ const Cart = ({ token, userId }) => {
 
   const fetchCartItems = async () => {
     try {
-      if (!token) {
-        return;
-      }
-      const response = await axios.get(`/api/cart/user-cart/${userId}`, {
+      const response = await axios.get(`/api/cart/user-cart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
