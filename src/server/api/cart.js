@@ -5,6 +5,7 @@ const {
   addToCart,
   removeFromCart,
   getCartItemsByUserId,
+  clearCart,
 } = require("../db/cart");
 
 // -Middleware to extract userId and icecreamId from route parameters and add them to req.user-
@@ -50,6 +51,16 @@ cartRouter.get("/user-cart", async (req, res, next) => {
     const userId = req.user.id;
     const cartItems = await getCartItemsByUserId(userId);
     res.json(cartItems);
+  } catch (error) {
+    next(error);
+  }
+});
+
+cartRouter.patch("/clear-cart", async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    await clearCart(userId);
+    res.json({ success: true, message: "Cart Cleared" });
   } catch (error) {
     next(error);
   }
