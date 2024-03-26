@@ -21,8 +21,7 @@ const Checkout = ({ userId, token }) => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        if (!token) return;
-        const response = await axios.get(`/api/cart/user-cart/${userId}`, {
+        const response = await axios.get(`/api/cart/user-cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -76,7 +75,7 @@ const Checkout = ({ userId, token }) => {
         })
       );
 
-      await axios.delete(`/api/cart/clear-cart/${userId}`, {
+      await axios.delete(`/api/cart/clear-cart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

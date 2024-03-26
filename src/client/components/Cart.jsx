@@ -34,14 +34,11 @@ const Cart = ({ token, userId }) => {
 
   const handleRemoveFromCart = async (icecreamId) => {
     try {
-      if (!token) {
-        return;
-      }
-      await axios.delete(`/api/cart/remove-from-cart/${userId}/${icecreamId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.patch(
+        `/api/cart/remove-from-cart`,
+        { userId, icecreamId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       fetchCartItems();
     } catch (error) {
       console.error("Error removing item from cart:", error);
