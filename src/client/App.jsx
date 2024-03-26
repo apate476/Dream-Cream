@@ -10,18 +10,17 @@ import Account from "./components/Account";
 import UpdateForm from "./components/UpdateForm";
 
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [loggedIn, setLoggedIn] = useState(false);
 
   function signin() {
-    setLoggedIn(true);
+    setToken(localStorage.getItem("token"));
   }
 
   function logout() {
-    setLoggedIn(false);
+    setToken(null);
     localStorage.removeItem("token");
   }
 
@@ -30,7 +29,7 @@ function App() {
       <header>
         <div></div>
         <h1>Dream Cream</h1>
-        <NavBar loggedIn={loggedIn} logout={logout} />
+        <NavBar loggedIn={token != null} logout={logout} />
       </header>
 
       <main>

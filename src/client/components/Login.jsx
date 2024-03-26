@@ -18,7 +18,6 @@ const Login = ({ signin, setToken, token }) => {
   };
 
   const login = async () => {
-    const user = { email, password };
     try {
       const response = await fetch("http://localhost:3000/api/users/login", {
         method: "POST",
@@ -34,9 +33,9 @@ const Login = ({ signin, setToken, token }) => {
       if (!response.ok) {
         throw result;
       }
-      console.log(token);
-      localStorage.setItem("token", token);
-      setToken(token);
+      console.log(result.token);
+      localStorage.setItem("token", result.token);
+      setToken(result.token);
       setMessage(result.message);
       signin();
       navigate("/");
