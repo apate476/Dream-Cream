@@ -7,7 +7,6 @@ import CompanyDescription from "./components/AboutUs";
 import Cart from "./components/Cart";
 import NewFlavorForm from "./components/NewFlavor";
 import Account from "./components/Account";
-import Cookies from "universal-cookie";
 import UpdateForm from "./components/UpdateForm";
 
 import { Routes, Route } from "react-router-dom";
@@ -16,14 +15,6 @@ import { useEffect, useState } from "react";
 function App() {
   const [token, setToken] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
-
-  const cookies = new Cookies();
-  useEffect(() => {
-    const login_token = cookies.get("login_token");
-    if (login_token) {
-      setToken(login_token);
-    }
-  }, []);
 
   function signin() {
     setLoggedIn(true);
@@ -53,23 +44,13 @@ function App() {
           <Route
             path="/api/users/login"
             element={
-              <Login
-                cookies={cookies}
-                token={token}
-                setToken={setToken}
-                signin={signin}
-              />
+              <Login token={token} setToken={setToken} signin={signin} />
             }
           />
           <Route
             path="/api/users/register"
             element={
-              <AddUser
-                cookies={cookies}
-                token={token}
-                setToken={setToken}
-                signin={signin}
-              />
+              <AddUser token={token} setToken={setToken} signin={signin} />
             }
           />
           <Route

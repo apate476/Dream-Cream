@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const Login = ({ signin, setToken, cookies, token }) => {
+const Login = ({ signin, setToken, token }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -18,6 +18,7 @@ const Login = ({ signin, setToken, cookies, token }) => {
   };
 
   const login = async () => {
+    const user = { email, password };
     try {
       const response = await fetch("http://localhost:3000/api/users/login", {
         method: "POST",
@@ -33,7 +34,6 @@ const Login = ({ signin, setToken, cookies, token }) => {
       if (!response.ok) {
         throw result;
       }
-      cookies.set("login_token", result.token);
       console.log(token);
       localStorage.setItem("token", token);
       setToken(token);
