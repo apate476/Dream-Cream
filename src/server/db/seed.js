@@ -60,8 +60,8 @@ const dropTables = async () => {
         DROP TABLE IF EXISTS users CASCADE;
         DROP TABLE IF EXISTS icecream CASCADE;
         DROP TABLE IF EXISTS orders CASCADE;
-        DROP TABLE IF EXISTS orders_products ;
-        DROP TABLE IF EXISTS cart ;
+        DROP TABLE IF EXISTS orders_products;
+        DROP TABLE IF EXISTS cart;
         `);
   } catch (err) {
     throw err;
