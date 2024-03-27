@@ -20,7 +20,7 @@ async function getSinlgeIceCream(id) {
 async function addFlavor(flavor) {
   const { rows } = await db.query(
     `
-    INSERT INTO icecream (flavor, brand, price, size, "imageUrl", nutrition)
+    INSERT INTO icecream (flavor, brand, price, size, imageurl, nutrition)
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *
   `,
@@ -29,7 +29,7 @@ async function addFlavor(flavor) {
       flavor.brand,
       flavor.price,
       flavor.size,
-      flavor.imageUrl,
+      flavor.imageurl,
       flavor.nutrition,
     ]
   );

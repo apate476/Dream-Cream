@@ -8,7 +8,7 @@ export default function NewFlavorForm() {
   const [flavor, setFlavor] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageurl, setImageUrl] = useState("");
   const [price, setPrice] = useState("");
   const [nutrition, setNutrition] = useState("");
 
@@ -30,7 +30,7 @@ export default function NewFlavorForm() {
       flavor,
       brand,
       size,
-      imageUrl,
+      imageurl,
       price,
       nutrition,
     };
@@ -90,8 +90,8 @@ export default function NewFlavorForm() {
       <label>
         Image Url:
         <input
-          name="imageUrl"
-          value={imageUrl}
+          name="imageurl"
+          value={imageurl}
           onChange={(event) => setImageUrl(event.target.value)}
         />
       </label>
