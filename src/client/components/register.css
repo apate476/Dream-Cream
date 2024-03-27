@@ -49,3 +49,10 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+@media (min-width: 1920px) {
+  .flavor-form {
+    margin-left: 35rem;
+    margin-top: 3rem;
+  }
+}
