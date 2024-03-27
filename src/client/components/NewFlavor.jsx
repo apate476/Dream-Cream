@@ -53,8 +53,8 @@ export default function NewFlavorForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Add New Flavor!</h1>
+    <form onSubmit={handleSubmit} className="flavor-form">
+      <h1 className="add-flavor">Add New Flavor!</h1>
       <label>
         Flavor:
         <input

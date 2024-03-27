@@ -5,3 +5,14 @@
 .login-header {
   margin-left: 34.5rem;
 }
+
+@media (min-width: 1920px) {
+  .loginform {
+    margin-left: 40.5rem;
+  }
+
+  .login-header {
+    margin-left: 45.5rem;
+    margin-top: 3rem;
+  }
+}

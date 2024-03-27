@@ -28,8 +28,8 @@ function App() {
   return (
     <>
       <header>
-        <div></div>
-        <h1>Dream Cream</h1>
+        {/* <div></div> */}
+        <h1 className="Title">Dream Cream</h1>
         <NavBar loggedIn={token != null} logout={logout} />
       </header>
 

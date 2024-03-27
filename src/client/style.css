@@ -301,3 +301,17 @@ header {
   background-color: #666;
   color: white;
 }
+
+@media (max-width: 1920px) {
+  .Title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 53rem;
+    margin-bottom: 3rem;
+  }
+
+  .add-flavor {
+    margin-left: 3rem;
+  }
+}
