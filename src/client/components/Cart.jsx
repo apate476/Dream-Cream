@@ -12,9 +12,7 @@ const Cart = ({ token, userId }) => {
   const fetchCartItems = async () => {
     try {
       const response = await axios.get(`/api/cart/user-cart`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems(response.data);
       calculateTotalPrice(response.data);

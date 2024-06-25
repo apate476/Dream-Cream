@@ -40,12 +40,12 @@ const Login = ({ signin, setToken, token }) => {
       setMessage(result.message);
       signin();
       navigate("/");
+      setEmail("");
+      setPassword("");
       if (!response.ok) {
         throw result;
       }
 
-      setEmail("");
-      setPassword("");
     } catch (err) {
       console.error(`${err.name}: ${err.message}`);
     }
